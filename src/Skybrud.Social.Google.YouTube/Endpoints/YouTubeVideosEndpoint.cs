@@ -38,28 +38,28 @@ namespace Skybrud.Social.Google.YouTube.Endpoints {
         /// Gets a list of videos based on the specified <paramref name="videoId"/>.
         /// </summary>
         /// <param name="videoId">The ID of the video to be returned.</param>
-        /// <returns>An instance of <see cref="YouTubeGetVideoListResponse"/> representing the response.</returns>
-        public YouTubeGetVideoListResponse GetVideos(string videoId) {
+        /// <returns>An instance of <see cref="YouTubeVideoListResponse"/> representing the response.</returns>
+        public YouTubeVideoListResponse GetVideos(string videoId) {
             if (string.IsNullOrWhiteSpace(videoId)) throw new ArgumentNullException(nameof(videoId));
-            return YouTubeGetVideoListResponse.ParseResponse(Raw.GetVideos(videoId));
+            return new YouTubeVideoListResponse(Raw.GetVideos(videoId));
         }
 
         /// <summary>
         /// Gets a list of videos based on the specified <paramref name="videoIds"/>.
         /// </summary>
         /// <param name="videoIds">The IDs of videos to be returned.</param>
-        /// <returns>An instance of <see cref="YouTubeGetVideoListResponse"/> representing the response.</returns>
-        public YouTubeGetVideoListResponse GetVideos(params string[] videoIds) {
-            return YouTubeGetVideoListResponse.ParseResponse(Raw.GetVideos(videoIds));
+        /// <returns>An instance of <see cref="YouTubeVideoListResponse"/> representing the response.</returns>
+        public YouTubeVideoListResponse GetVideos(params string[] videoIds) {
+            return new YouTubeVideoListResponse(Raw.GetVideos(videoIds));
         }
 
         /// <summary>
         /// Gets a list of videos based on the specified <paramref name="options"/>.
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
-        /// <returns>An instance of <see cref="YouTubeGetVideoListResponse"/> representing the response.</returns>
-        public YouTubeGetVideoListResponse GetVideos(YouTubeGetVideoListOptions options) {
-            return YouTubeGetVideoListResponse.ParseResponse(Raw.GetVideos(options));
+        /// <returns>An instance of <see cref="YouTubeVideoListResponse"/> representing the response.</returns>
+        public YouTubeVideoListResponse GetVideos(YouTubeGetVideoListOptions options) {
+            return new YouTubeVideoListResponse(Raw.GetVideos(options));
         }
 
         #endregion

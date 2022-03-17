@@ -37,18 +37,18 @@ namespace Skybrud.Social.Google.YouTube.Endpoints {
         /// Gets a list of playlist items for the specified <paramref name="playlistId"/>.
         /// </summary>
         /// <param name="playlistId">The ID of the playlist.</param>
-        /// <returns>An instance of <see cref="YouTubeGetPlaylistItemListResponse"/> representing the response.</returns>
-        public YouTubeGetPlaylistItemListResponse GetPlaylistItems(string playlistId) {
-            return YouTubeGetPlaylistItemListResponse.ParseResponse(Raw.GetPlaylistItems(playlistId));
+        /// <returns>An instance of <see cref="YouTubePlaylistItemListResponse"/> representing the response.</returns>
+        public YouTubePlaylistItemListResponse GetPlaylistItems(string playlistId) {
+            return new YouTubePlaylistItemListResponse(Raw.GetPlaylistItems(playlistId));
         }
 
         /// <summary>
         /// Gets a list of playlist items based on the specified <paramref name="options"/>.
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
-        /// <returns>An instance of <see cref="YouTubeGetPlaylistItemListResponse"/> representing the response.</returns>
-        public YouTubeGetPlaylistItemListResponse GetPlaylistItems(YouTubeGetPlaylistItemListOptions options) {
-            return YouTubeGetPlaylistItemListResponse.ParseResponse(Raw.GetPlaylistItems(options));
+        /// <returns>An instance of <see cref="YouTubePlaylistItemListResponse"/> representing the response.</returns>
+        public YouTubePlaylistItemListResponse GetPlaylistItems(YouTubeGetPlaylistItemListOptions options) {
+            return new YouTubePlaylistItemListResponse(Raw.GetPlaylistItems(options));
         }
 
         #endregion

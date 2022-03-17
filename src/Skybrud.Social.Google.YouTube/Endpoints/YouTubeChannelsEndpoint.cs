@@ -36,27 +36,27 @@ namespace Skybrud.Social.Google.YouTube.Endpoints {
         /// <summary>
         /// Gets a list of channels for the authenticated user.
         /// </summary>
-        /// <returns>An instance of <see cref="YouTubeGetChannelListResponse"/> representing the response.</returns>
-        public YouTubeGetChannelListResponse GetChannels() {
-            return YouTubeGetChannelListResponse.ParseResponse(Raw.GetChannels());
+        /// <returns>An instance of <see cref="YouTubeChannelListResponse"/> representing the response.</returns>
+        public YouTubeChannelListResponse GetChannels() {
+            return new YouTubeChannelListResponse(Raw.GetChannels());
         }
 
         /// <summary>
         /// Gets a list of channels for the specified <paramref name="username"/>.
         /// </summary>
         /// <param name="username">The username.</param>
-        /// <returns>An instance of <see cref="YouTubeGetChannelListResponse"/> representing the response.</returns>
-        public YouTubeGetChannelListResponse GetChannels(string username) {
-            return YouTubeGetChannelListResponse.ParseResponse(Raw.GetChannels(username));
+        /// <returns>An instance of <see cref="YouTubeChannelListResponse"/> representing the response.</returns>
+        public YouTubeChannelListResponse GetChannels(string username) {
+            return new YouTubeChannelListResponse(Raw.GetChannels(username));
         }
 
         /// <summary>
         /// Gets a list of channels based on the specified <paramref name="options"/>.
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
-        /// <returns>An instance of <see cref="YouTubeGetChannelListResponse"/> representing the response.</returns>
-        public YouTubeGetChannelListResponse GetChannels(YouTubeGetChannelListOptions options) {
-            return YouTubeGetChannelListResponse.ParseResponse(Raw.GetChannels(options));
+        /// <returns>An instance of <see cref="YouTubeChannelListResponse"/> representing the response.</returns>
+        public YouTubeChannelListResponse GetChannels(YouTubeGetChannelListOptions options) {
+            return new YouTubeChannelListResponse(Raw.GetChannels(options));
         }
 
         #endregion

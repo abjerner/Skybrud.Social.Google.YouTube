@@ -37,28 +37,28 @@ namespace Skybrud.Social.Google.YouTube.Endpoints {
         /// <summary>
         /// Gets a list of playlists for the authenticated user.
         /// </summary>
-        /// <returns>An instance of <see cref="YouTubeGetPlaylistListResponse"/> representing the response.</returns>
-        public YouTubeGetPlaylistListResponse GetPlaylists() {
-            return YouTubeGetPlaylistListResponse.ParseResponse(Raw.GetPlaylists());
+        /// <returns>An instance of <see cref="YouTubePlaylistListResponse"/> representing the response.</returns>
+        public YouTubePlaylistListResponse GetPlaylists() {
+            return new YouTubePlaylistListResponse(Raw.GetPlaylists());
         }
 
         /// <summary>
         /// Gets a list of playlists for the specified <paramref name="channelId"/>.
         /// </summary>
         /// <param name="channelId">The ID of the channel.</param>
-        /// <returns>An instance of <see cref="YouTubeGetPlaylistListResponse"/> representing the response.</returns>
-        public YouTubeGetPlaylistListResponse GetPlaylists(string channelId) {
-            return YouTubeGetPlaylistListResponse.ParseResponse(Raw.GetPlaylists(channelId));
+        /// <returns>An instance of <see cref="YouTubePlaylistListResponse"/> representing the response.</returns>
+        public YouTubePlaylistListResponse GetPlaylists(string channelId) {
+            return new YouTubePlaylistListResponse(Raw.GetPlaylists(channelId));
         }
 
         /// <summary>
         /// Gets a list of playlists based on the specified <paramref name="options"/>.
         /// </summary>
         /// <param name="options">The options for the call to the API.</param>
-        /// <returns>An instance of <see cref="YouTubeGetPlaylistListResponse"/> representing the response.</returns>
-        public YouTubeGetPlaylistListResponse GetPlaylists(YouTubeGetPlaylistListOptions options) {
+        /// <returns>An instance of <see cref="YouTubePlaylistListResponse"/> representing the response.</returns>
+        public YouTubePlaylistListResponse GetPlaylists(YouTubeGetPlaylistListOptions options) {
             if (options == null) throw new ArgumentNullException(nameof(options));
-            return YouTubeGetPlaylistListResponse.ParseResponse(Raw.GetPlaylists(options));
+            return new YouTubePlaylistListResponse(Raw.GetPlaylists(options));
         }
 
         #endregion
