@@ -49,7 +49,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         /// Initializes a new instance from the specified <paramref name="json"/> object.
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
-        protected  YouTubeChannelSnippet(JObject json) : base(json) {
+        protected YouTubeChannelSnippet(JObject json) : base(json) {
             Title = json.GetString("title");
             Description = json.GetString("description");
             PublishedAt = json.GetString("publishedAt", EssentialsTime.Parse);

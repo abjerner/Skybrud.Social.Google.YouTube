@@ -6,27 +6,27 @@ namespace Skybrud.Social.Google.YouTube.Options.PlaylistItems {
     public class YouTubePlaylistItemParts {
 
         #region Properties
-        
+
         /// <summary>
         /// Indicates that the response from the YouTube API should include the ID of the playlist items.
         /// </summary>
         public static readonly YouTubePlaylistItemPart Id = new YouTubePlaylistItemPart("id");
-        
+
         /// <summary>
         /// Indicates that the response from the YouTube API should include the <c>snippet</c> object of the playlist items.
         /// </summary>
         public static readonly YouTubePlaylistItemPart Snippet = new YouTubePlaylistItemPart("snippet");
-        
+
         /// <summary>
         /// Indicates that the response from the YouTube API should include the <c>contentDetails</c> object of the playlist items.
         /// </summary>
         public static readonly YouTubePlaylistItemPart ContentDetails = new YouTubePlaylistItemPart("contentDetails");
-        
+
         /// <summary>
         /// Indicates that the response from the YouTube API should include the <c>status</c> object of the playlist items.
         /// </summary>
         public static readonly YouTubePlaylistItemPart Status = new YouTubePlaylistItemPart("status");
-        
+
         /// <summary>
         /// Gets a collection of all parts available for a YouTube channel.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Skybrud.Social.Google.YouTube.Options.PlaylistItems {
         }
 
         #endregion
-    
+
     }
 
 }

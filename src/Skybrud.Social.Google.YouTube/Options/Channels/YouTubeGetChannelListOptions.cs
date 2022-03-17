@@ -3,7 +3,7 @@ using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 
 namespace Skybrud.Social.Google.YouTube.Options.Channels {
-    
+
     /// <summary>
     /// Clas representing the options for getting a list of channels from the YouTube API.
     /// </summary>
@@ -55,7 +55,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Channels {
         #endregion
 
         #region Member methods
-        
+
         /// <inheritdoc />
         public IHttpRequest GetRequest() {
 

@@ -17,7 +17,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// <summary>
         /// Gets the default thumbnail image of the video. The thumbnail is 120px wide and 90px tall.
         /// </summary>
-        public YouTubeVideoThumbnail Default { get;  }
+        public YouTubeVideoThumbnail Default { get; }
 
         /// <summary>
         /// Gets whether the <see cref="Default"/> property has a value.
@@ -69,7 +69,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         #endregion
 
         #region Constructors
-        
+
         /// <summary>
         /// Initializes a new instance from the specified <paramref name="json"/> object.
         /// </summary>

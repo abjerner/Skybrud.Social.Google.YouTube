@@ -8,7 +8,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Videos {
     ///     <cref>https://developers.google.com/youtube/v3/docs/videos/list#part</cref>
     /// </see>
     public class YouTubeVideoPart : YouTubePart {
-        
+
         #region Constructors
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Videos {
         }
 
         #endregion
-    
+
     }
 
 }

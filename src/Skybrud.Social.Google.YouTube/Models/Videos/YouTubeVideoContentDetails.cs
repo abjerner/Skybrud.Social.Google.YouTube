@@ -19,22 +19,22 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// Gets the length of the video.
         /// </summary>
         public YouTubeVideoDuration Duration { get; }
-        
+
         /// <summary>
         /// Gets the dimension of the video. Can either be in <c>3D</c> or in <c>2D</c>.
         /// </summary>
         public string Dimension { get; }
-        
+
         /// <summary>
         /// Gets whether the video is available in high definition (HD) or only standard definition (SD). Can be either <c>hd</c> or <c>sd</c>.
         /// </summary>
         public YouTubeVideoDefinition Definition { get; }
-        
+
         /// <summary>
         /// Gets whether the video has captions. Can be either <c>true</c> or <c>false</c>.
         /// </summary>
         public bool HasCaption { get; }
-        
+
         /// <summary>
         /// Gets whether the video represents licensed content, which means that the content has been claimed by a
         /// YouTube content partner.
@@ -42,9 +42,9 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         public bool IsLicensedContent { get; }
 
         #endregion
-        
+
         #region Constructors
-        
+
         /// <summary>
         /// Initializes a new instance from the specified <paramref name="json"/> object.
         /// </summary>

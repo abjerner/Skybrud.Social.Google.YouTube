@@ -16,22 +16,22 @@ namespace Skybrud.Social.Google.YouTube.Models.Playlists {
         /// Gets the date and time that the playlist was created.
         /// </summary>
         public EssentialsTime PublishedAt { get; }
-        
+
         /// <summary>
         /// Gets the ID that YouTube uses to uniquely identify the channel that published the playlist.
         /// </summary>
         public string ChannelId { get; }
-        
+
         /// <summary>
         /// Gets the channel title of the channel that the video belongs to.
         /// </summary>
         public string ChannelTitle { get; }
-        
+
         /// <summary>
         /// Gets the playlist's title.
         /// </summary>
         public string Title { get; }
-        
+
         /// <summary>
         /// Gets the playlist's description.
         /// </summary>

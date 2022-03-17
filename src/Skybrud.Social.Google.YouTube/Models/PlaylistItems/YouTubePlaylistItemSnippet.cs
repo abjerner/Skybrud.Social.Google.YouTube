@@ -14,7 +14,7 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
     public class YouTubePlaylistItemSnippet : GoogleObject {
 
         #region Properties
-        
+
         /// <summary>
         /// gets the timestamp for when the item was added to the playlist.
         /// </summary>
@@ -39,7 +39,7 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         /// Gets a collection of thumbnails of the playlist item.
         /// </summary>
         public YouTubePlaylistItemThumbnails Thumbnails { get; }
-        
+
         /// <summary>
         /// Gets the title of the parent YouTube channel.
         /// </summary>
@@ -62,7 +62,7 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         public YouTubePlaylistItemResourceId ResourceId { get; }
 
         #endregion
-        
+
         #region Constructors
 
         /// <summary>

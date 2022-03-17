@@ -40,7 +40,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Playlists {
         public static YouTubePlaylistPart[] Values => All.ToArray();
 
         #endregion
-    
+
     }
 
 }

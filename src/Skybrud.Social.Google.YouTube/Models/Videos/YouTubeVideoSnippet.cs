@@ -15,7 +15,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
     public class YouTubeVideoSnippet : GoogleObject {
 
         #region Properties
-        
+
         /// <summary>
         /// Gets or sets the publish date of the video.
         /// </summary>
@@ -59,10 +59,10 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// <summary>
         /// Gets othe <c>liveBroadcastContent</c> property.
         /// </summary>
-        public YouTubeVideoLiveBroadcastContent LiveBroadcastContent { get; } 
+        public YouTubeVideoLiveBroadcastContent LiveBroadcastContent { get; }
 
         #endregion
-        
+
         #region Constructors
 
         /// <summary>

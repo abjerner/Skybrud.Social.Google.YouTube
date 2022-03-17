@@ -10,12 +10,12 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
     public class YouTubePlaylistItemResourceId : GoogleObject {
 
         #region Properties
-        
+
         /// <summary>
         /// Gets the kind, or type, of the referred resource.
         /// </summary>
         public string Kind { get; }
-        
+
         /// <summary>
         /// If the <c>snippet.resourceId.kind</c> property's value is <c>youtube#video</c>, then this property will be
         /// present and its value will contain the ID that YouTube uses to uniquely identify the video in the playlist.
@@ -23,7 +23,7 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         public string VideoId { get; }
 
         #endregion
-        
+
         #region Constructors
 
         /// <summary>

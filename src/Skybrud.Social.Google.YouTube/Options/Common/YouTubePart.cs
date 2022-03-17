@@ -6,7 +6,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Common {
     public abstract class YouTubePart {
 
         #region Properties
-        
+
         /// <summary>
         /// Gets the name of the part.
         /// </summary>
@@ -25,7 +25,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Common {
         }
 
         #endregion
-    
+
     }
 
 }

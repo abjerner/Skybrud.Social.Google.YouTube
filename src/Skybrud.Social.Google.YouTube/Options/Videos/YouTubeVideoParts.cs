@@ -16,7 +16,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Videos {
         /// Indicates that the response from the YouTube API should include the <c>snippet</c> object of the video.
         /// </summary>
         public static readonly YouTubeVideoPart Snippet = new YouTubeVideoPart("snippet");
-        
+
         /// <summary>
         /// Indicates that the response from the YouTube API should include the <c>contentDetails</c> object of the video.
         /// </summary>
@@ -66,7 +66,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Videos {
         /// Indicates that the response from the YouTube API should include the <c>topicDetails</c> object of the video.
         /// </summary>
         public static readonly YouTubeVideoPart TopicDetails = new YouTubeVideoPart("topicDetails");
-        
+
         /// <summary>
         /// Gets a collection of all parts available for a YouTube video.
         /// </summary>
@@ -81,7 +81,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Videos {
         public static YouTubeVideoPart[] Values => All.ToArray();
 
         #endregion
-    
+
     }
 
 }

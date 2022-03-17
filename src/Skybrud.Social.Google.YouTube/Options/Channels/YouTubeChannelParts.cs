@@ -50,7 +50,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Channels {
         public static YouTubeChannelPart[] Values => All.ToArray();
 
         #endregion
-    
+
     }
 
 }

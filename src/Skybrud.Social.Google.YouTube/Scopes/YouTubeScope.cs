@@ -1,7 +1,7 @@
 using Skybrud.Social.Google.Scopes;
 
 namespace Skybrud.Social.Google.YouTube.Scopes {
-    
+
     /// <summary>
     /// Class representing a scope in the YouTube API.
     /// </summary>

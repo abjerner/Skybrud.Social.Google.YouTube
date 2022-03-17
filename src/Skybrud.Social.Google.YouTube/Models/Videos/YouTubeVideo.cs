@@ -18,7 +18,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// Gets the ID of the video.
         /// </summary>
         public string Id { get; }
-        
+
         /// <summary>
         /// Gets a reference to the <strong>snippet</strong> part of the video.
         /// </summary>
@@ -28,7 +28,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// Gets whether the <see cref="Snippet"/> property was included in the response.
         /// </summary>
         public bool HasSnippet => Snippet != null;
-        
+
         /// <summary>
         /// Gets a reference to the <strong>contentDetails</strong> part of the video.
         /// </summary>
@@ -38,7 +38,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// Gets whether the <see cref="ContentDetails"/> property was included in the response.
         /// </summary>
         public bool HasContentDetails => ContentDetails != null;
-        
+
         /// <summary>
         /// Gets a reference to the <strong>status</strong> part of the video.
         /// </summary>
@@ -48,7 +48,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// Gets whether the <see cref="Status"/> property was included in the response.
         /// </summary>
         public bool HasStatus => Status != null;
-        
+
         /// <summary>
         /// Gets a reference to the <strong>statistics</strong> part of the video.
         /// </summary>
@@ -62,7 +62,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         #endregion
 
         #region Constructors
-        
+
         /// <summary>
         /// Initializes a new instance from the specified <paramref name="json"/> object.
         /// </summary>
@@ -89,7 +89,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         }
 
         #endregion
-    
+
     }
 
 }

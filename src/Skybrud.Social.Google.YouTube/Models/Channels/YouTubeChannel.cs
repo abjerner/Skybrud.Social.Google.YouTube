@@ -3,7 +3,7 @@ using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.Google.Models;
 
 namespace Skybrud.Social.Google.YouTube.Models.Channels {
-    
+
     /// <summary>
     /// Class representing a YouTube channel.
     /// </summary>
@@ -33,7 +33,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         #endregion
 
         #region Constructors
-        
+
         /// <summary>
         /// Initializes a new instance from the specified <paramref name="json"/> object.
         /// </summary>

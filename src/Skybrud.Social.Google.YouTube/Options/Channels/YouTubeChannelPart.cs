@@ -67,7 +67,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Channels {
         }
 
         #endregion
-    
+
     }
 
 }

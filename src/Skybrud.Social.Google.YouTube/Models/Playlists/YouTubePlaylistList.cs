@@ -11,7 +11,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Playlists {
     public class YouTubePlaylistList : GoogleResource {
 
         #region Properties
-        
+
         /// <summary>
         /// Gets the token that can be used as the value of the <see cref="YouTubeGetPlaylistListOptions.PageToken"/>
         /// parameter to retrieve the next page in the result set.

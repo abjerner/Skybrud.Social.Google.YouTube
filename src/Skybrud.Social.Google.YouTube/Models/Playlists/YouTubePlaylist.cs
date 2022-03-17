@@ -15,7 +15,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Playlists {
         /// Gets the ID that YouTube uses to uniquely identify the playlist.
         /// </summary>
         public string Id { get; }
-        
+
         /// <summary>
         /// Gets basic details about the playlist, such as its title and description.
         /// </summary>
@@ -30,9 +30,9 @@ namespace Skybrud.Social.Google.YouTube.Models.Playlists {
         /// Gets information about the playlist content, including the number of videos in the playlist.
         /// </summary>
         public YouTubePlaylistContentDetails ContentDetails { get; }
-        
+
         #endregion
-        
+
         #region Constructors
 
         /// <summary>

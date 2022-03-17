@@ -2,12 +2,12 @@
 using Skybrud.Social.Google.YouTube.Options.Common;
 
 namespace Skybrud.Social.Google.YouTube.Exceptions {
-    
+
     /// <summary>
     /// Exception class throw when a given string can't be parsed into an instance of <see cref="YouTubePart"/>.
     /// </summary>
     public class YouTubeUnknownPartException : Exception {
-        
+
         #region Properties
 
         /// <summary>
