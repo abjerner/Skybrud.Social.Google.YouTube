@@ -16,7 +16,7 @@ namespace Skybrud.Social.Google.YouTube {
         /// <returns>An instance of <see cref="YouTubeHttpClient"/>.</returns>
         public static YouTubeHttpClient YouTube(this GoogleOAuthClient client) {
             if (client == null) throw new ArgumentNullException(nameof(client));
-            return client.GetApiClient(() => new YouTubeHttpClient(client));
+            return client.GetHttpClient(() => new YouTubeHttpClient(client));
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Skybrud.Social.Google.YouTube {
         /// <returns>An instance of <see cref="YouTubeHttpService"/>.</returns>
         public static YouTubeHttpService YouTube(this GoogleHttpService service) {
             if (service == null) throw new ArgumentNullException(nameof(service));
-            return service.GetApiService(() => new YouTubeHttpService(service));
+            return service.GetHttpService(() => new YouTubeHttpService(service));
         }
 
     }
