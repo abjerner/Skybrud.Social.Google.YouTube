@@ -4,7 +4,7 @@ using Skybrud.Social.Google.Models;
 
 namespace Skybrud.Social.Google.YouTube.Models {
 
-    public class YouTubePageInfo : GoogleApiObject {
+    public class YouTubePageInfo : GoogleObject {
 
         #region Properties
 

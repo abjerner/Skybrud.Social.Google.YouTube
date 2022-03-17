@@ -11,7 +11,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
     /// <see>
     ///     <cref>https://developers.google.com/youtube/v3/docs/videos#status</cref>
     /// </see>
-    public class YouTubeVideoStatus : GoogleApiObject {
+    public class YouTubeVideoStatus : GoogleObject {
 
         #region Properties
 

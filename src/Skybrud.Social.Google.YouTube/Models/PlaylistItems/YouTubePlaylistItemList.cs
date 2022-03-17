@@ -4,7 +4,7 @@ using Skybrud.Social.Google.Models;
 
 namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
 
-    public class YouTubePlaylistItemList : GoogleApiResource {
+    public class YouTubePlaylistItemList : GoogleResource {
 
         #region Properties
 

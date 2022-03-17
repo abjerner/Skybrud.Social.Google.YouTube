@@ -10,7 +10,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
     /// <see>
     ///     <cref>https://developers.google.com/youtube/v3/docs/videos#resource</cref>
     /// </see>
-    public class YouTubeVideo : GoogleApiResource {
+    public class YouTubeVideo : GoogleResource {
 
         #region Properties
 

@@ -10,7 +10,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
     /// <see>
     ///     <cref>https://developers.google.com/youtube/v3/docs/channels#statistics</cref>
     /// </see>
-    public class YouTubeChannelStatistics : GoogleApiObject {
+    public class YouTubeChannelStatistics : GoogleObject {
 
         #region Properties
 

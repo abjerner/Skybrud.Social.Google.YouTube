@@ -7,7 +7,7 @@ namespace Skybrud.Social.Google.YouTube.Http {
     /// <summary>
     /// Class representing the raw YouTube endpoint / API implementation.
     /// </summary>
-    public class YouTubeHttpClient : GoogleApiHttpClientBase {
+    public class YouTubeHttpClient : GoogleHttpClientBase {
 
         #region Properties
 

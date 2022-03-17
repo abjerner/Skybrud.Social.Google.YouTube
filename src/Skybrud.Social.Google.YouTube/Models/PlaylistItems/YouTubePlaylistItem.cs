@@ -12,7 +12,7 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
     /// <see>
     ///     <cref>https://developers.google.com/youtube/v3/docs/playlistItems#resource</cref>
     /// </see>
-    public class YouTubePlaylistItem : GoogleApiResource {
+    public class YouTubePlaylistItem : GoogleResource {
 
         #region Properties
 

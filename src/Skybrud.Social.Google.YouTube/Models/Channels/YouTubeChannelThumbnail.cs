@@ -10,7 +10,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
     /// <see>
     ///     <cref>https://developers.google.com/youtube/v3/docs/channels#snippet.thumbnails</cref>
     /// </see>
-    public class YouTubeChannelThumbnail : GoogleApiObject {
+    public class YouTubeChannelThumbnail : GoogleObject {
 
         #region Properties
 

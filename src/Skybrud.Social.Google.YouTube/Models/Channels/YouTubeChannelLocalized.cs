@@ -9,7 +9,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
     /// title and description for the channel or it contains the channel's title and description in the default
     /// language for the channel's metadata.
     /// </summary>
-    public class YouTubeChannelLocalized : GoogleApiObject {
+    public class YouTubeChannelLocalized : GoogleObject {
 
         #region Properties
 

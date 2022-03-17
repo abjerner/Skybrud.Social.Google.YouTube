@@ -8,7 +8,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Playlists {
     /// <see>
     ///     <cref>https://developers.google.com/youtube/v3/docs/playlists#status</cref>
     /// </see>
-    public class YouTubePlaylistStatus : GoogleApiObject {
+    public class YouTubePlaylistStatus : GoogleObject {
 
         #region Properties
 

@@ -7,7 +7,7 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
     /// <see>
     ///     <cref>https://developers.google.com/youtube/v3/docs/playlistItems#snippet.thumbnails</cref>
     /// </see>
-    public class YouTubePlaylistItemThumbnail : GoogleApiObject {
+    public class YouTubePlaylistItemThumbnail : GoogleObject {
 
         #region Properties
 

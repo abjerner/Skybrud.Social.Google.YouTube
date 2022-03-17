@@ -12,7 +12,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
     /// <see>
     ///     <cref>https://developers.google.com/youtube/v3/docs/channels#snippet</cref>
     /// </see>
-    public class YouTubeChannelSnippet : GoogleApiObject {
+    public class YouTubeChannelSnippet : GoogleObject {
 
         #region Properties
 

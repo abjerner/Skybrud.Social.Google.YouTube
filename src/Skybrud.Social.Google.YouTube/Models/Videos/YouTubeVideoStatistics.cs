@@ -10,7 +10,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
     /// <see>
     ///     <cref>https://developers.google.com/youtube/v3/docs/videos#statistics</cref>
     /// </see>
-    public class YouTubeVideoStatistics : GoogleApiObject {
+    public class YouTubeVideoStatistics : GoogleObject {
 
         #region Properties
 

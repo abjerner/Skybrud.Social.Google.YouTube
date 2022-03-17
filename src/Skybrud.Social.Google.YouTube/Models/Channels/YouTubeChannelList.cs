@@ -10,7 +10,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
     /// <see>
     ///     <cref>https://developers.google.com/youtube/v3/docs/channels/list</cref>
     /// </see>
-    public class YouTubeChannelList : GoogleApiResource {
+    public class YouTubeChannelList : GoogleResource {
 
         #region Properties
 
