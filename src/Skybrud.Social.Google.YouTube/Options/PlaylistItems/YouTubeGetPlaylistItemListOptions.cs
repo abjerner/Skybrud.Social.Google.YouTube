@@ -64,7 +64,8 @@ namespace Skybrud.Social.Google.YouTube.Options.PlaylistItems {
         #endregion
 
         #region Member methods
-
+        
+        /// <inheritdoc />
         public IHttpRequest GetRequest() {
 
             HttpQueryString query = new HttpQueryString();

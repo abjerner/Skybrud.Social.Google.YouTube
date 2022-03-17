@@ -64,6 +64,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Videos {
 
         #region Member methods
 
+        /// <inheritdoc />
         public IHttpRequest GetRequest() {
 
             HttpQueryString query = new HttpQueryString();
