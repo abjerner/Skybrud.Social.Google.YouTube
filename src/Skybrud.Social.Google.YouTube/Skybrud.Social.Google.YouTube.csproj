@@ -1,37 +1,48 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
     <TargetFrameworks>netstandard1.3;net45;net46;net47</TargetFrameworks>
     <BuildInParallel>false</BuildInParallel>
   </PropertyGroup>
 
   <PropertyGroup>
-    <RootNamespace>Skybrud.Social.Google.YouTube</RootNamespace>
     <Version>1.0.0-beta001</Version>
-    <Company>Skybrud.dk a/s</Company>
+    <Company>Limbo</Company>
     <Product>Skybrud.Social</Product>
     <Authors>Anders Bjerner</Authors>
-    <Copyright>Copyright © 2019</Copyright>
-    <Description>Authentication and service implementation for the YouTube APIs.</Description>
+    <Copyright>Copyright © 2022</Copyright>
+    <Description>Authentication and service implementation for the YouTube API.</Description>
   </PropertyGroup>
 
+  <!-- Information for the NuGet package -->
   <PropertyGroup>
-    <PackageTags>Skybrud, Social, Google, YouTube, OAuth, JSON</PackageTags>
+    <PackageId>Skybrud.Social.Google.YouTube</PackageId>
+    <PackageTags>Skybrud, Limbo, Social, Google, YouTube, OAuth, JSON</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/abjerner/Skybrud.Social.Google.YouTube</PackageProjectUrl>
-    <PackageIconUrl>http://www.skybrud.dk/img/5431sk/icon/favicon.ico</PackageIconUrl>
+    <PackageProjectUrl>https://social.skybrud.dk/google/youtube/</PackageProjectUrl>
+    <PackageIcon>Limbo.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/abjerner/Skybrud.Social.Google.YouTube</RepositoryUrl>
   </PropertyGroup>
-  
+
+  <!-- Include NuGet dependencies -->
   <ItemGroup>
+    <PackageReference Include="Skybrud.Essentials.Http" Version="1.0.16" />
     <PackageReference Include="Skybrud.Social.Google" Version="1.0.1" />
   </ItemGroup>
 
+  <!-- Include package icon for NuGet -->
+  <ItemGroup>
+    <Content Include="../build/Limbo.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <!-- Generate XML documentation -->
   <PropertyGroup>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Skybrud.Social.Google.YouTube.xml</DocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
 
+  <!-- Generate ZIP file for GitHub -->
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(ConfigurationName)'=='Release' AND '$(TargetFramework)'=='net47' AND '$(BuildTools)'=='1'">
     <Exec Command="&quot;$(ProjectDir)..\build\Skybrud.BuildTools.Tasks.exe&quot; &quot;postBuild&quot; &quot;$(ConfigurationName)&quot; &quot;$(ProjectPath)&quot; &quot;$(TargetPath)&quot;" />
   </Target>
