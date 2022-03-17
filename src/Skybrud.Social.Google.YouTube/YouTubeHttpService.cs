@@ -3,6 +3,9 @@ using Skybrud.Social.Google.YouTube.Http;
 
 namespace Skybrud.Social.Google.YouTube {
 
+    /// <summary>
+    /// Strongly typed implementation of the YouTube API.s
+    /// </summary>
     public class YouTubeHttpService : GoogleHttpServiceBase {
 
         #region Properties

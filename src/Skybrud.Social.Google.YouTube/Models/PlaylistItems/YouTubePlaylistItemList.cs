@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.Google.Models;
+using Skybrud.Social.Google.YouTube.Options.Playlists;
 
 namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
 
@@ -12,13 +13,13 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         #region Properties
         
         /// <summary>
-        /// Gets the token that can be used as the value of the <see cref="YouTubeGetVideoListOptions.PageToken"/>
+        /// Gets the token that can be used as the value of the <see cref="YouTubeGetPlaylistListOptions.PageToken"/>
         /// parameter to retrieve the next page in the result set.
         /// </summary>
         public string NextPageToken { get; }
 
         /// <summary>
-        /// Gets the token that can be used as the value of the <see cref="YouTubeGetVideoListOptions.PageToken"/>
+        /// Gets the token that can be used as the value of the <see cref="YouTubeGetPlaylistListOptions.PageToken"/>
         /// parameter to retrieve the previous page in the result set.
         /// </summary>
         public string PrevPageToken { get; }

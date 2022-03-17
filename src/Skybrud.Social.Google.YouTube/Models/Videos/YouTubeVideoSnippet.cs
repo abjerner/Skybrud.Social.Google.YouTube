@@ -69,23 +69,23 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// Initializes a new instance from the specified <paramref name="json"/> object.
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
-        protected YouTubeVideoSnippet(JObject obj) : base(obj) {
+        protected YouTubeVideoSnippet(JObject json) : base(json) {
 
             // Parse the "liveBroadcastContent" property
-            string strBroadcast = obj.GetString("liveBroadcastContent");
+            string strBroadcast = json.GetString("liveBroadcastContent");
             if (!Enum.TryParse(strBroadcast, true, out YouTubeVideoLiveBroadcastContent broadcast)) {
                 throw new Exception("Unknown value for liveBroadcastContent \"" + strBroadcast + "\" - please create an issue so it can be fixed https://github.com/abjerner/Skybrud.Social.Google/issues/new");
             }
 
             // Initialize the snippet object
-            PublishedAt = obj.GetString("publishedAt", EssentialsTime.Parse);
-            ChannelId = obj.GetString("channelId");
-            Title = obj.GetString("title");
-            Description = obj.GetString("description");
-            Thumbnails = obj.GetObject("thumbnails", YouTubeVideoThumbnails.Parse);
-            ChannelTitle = obj.GetString("channelTitle");
-            Tags = obj.GetStringArray("tags");
-            CategoryId = obj.GetString("categoryId");
+            PublishedAt = json.GetString("publishedAt", EssentialsTime.Parse);
+            ChannelId = json.GetString("channelId");
+            Title = json.GetString("title");
+            Description = json.GetString("description");
+            Thumbnails = json.GetObject("thumbnails", YouTubeVideoThumbnails.Parse);
+            ChannelTitle = json.GetString("channelTitle");
+            Tags = json.GetStringArray("tags");
+            CategoryId = json.GetString("categoryId");
             LiveBroadcastContent = broadcast;
 
         }
@@ -95,12 +95,12 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         #region Static methods
 
         /// <summary>
-        /// Returns a new <see cref="YouTubeVideoSnippet"/> parsed from the specified <paramref name="obj"/>.
+        /// Returns a new <see cref="YouTubeVideoSnippet"/> parsed from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubeVideoSnippet"/>.</returns>
-        public static YouTubeVideoSnippet Parse(JObject obj) {
-            return obj == null ? null : new YouTubeVideoSnippet(obj);
+        public static YouTubeVideoSnippet Parse(JObject json) {
+            return json == null ? null : new YouTubeVideoSnippet(json);
         }
 
         #endregion

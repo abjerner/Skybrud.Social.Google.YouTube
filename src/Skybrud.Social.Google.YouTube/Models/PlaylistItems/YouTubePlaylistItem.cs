@@ -1,7 +1,5 @@
-using System;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
-using Skybrud.Essentials.Time;
 using Skybrud.Social.Google.Models;
 
 namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
@@ -35,25 +33,6 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         /// Gets a reference to the <c>status</c> object of the playlist item. 
         /// </summary>
         public YouTubePlaylistItemStatus Status { get; }
-
-        #region Shortcuts
-
-        /// <summary>
-        /// Gets the YouTube ID of the video.
-        /// </summary>
-        public string VideoId => Snippet.ResourceId.VideoId;
-
-        /// <summary>
-        /// Gets the title of the YouTube video.
-        /// </summary>
-        public string Title => Snippet.Title;
-
-        /// <summary>
-        /// Gets the publish date of the YouTube video.
-        /// </summary>
-        public EssentialsTime PublishedAt => Snippet.PublishedAt;
-
-        #endregion
 
         #endregion
 

@@ -38,6 +38,7 @@ namespace Skybrud.Social.Google.YouTube.Exceptions {
 
         #region Member methods
 
+        /// <inheritdoc />
         public override string Message {
             get {
                 string s = base.Message;

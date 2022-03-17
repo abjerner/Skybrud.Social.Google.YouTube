@@ -11,14 +11,21 @@ namespace Skybrud.Social.Google.YouTube.Models.Playlists {
 
         #region Properties
 
+        /// <summary>
+        /// Gets the number of videos in the playlist.
+        /// </summary>
         public int ItemCount { get; }
 
         #endregion
 
         #region Constructor
 
-        protected YouTubePlaylistContentDetails(JObject obj) : base(obj) {
-            ItemCount = obj.GetInt32("itemCount");
+        /// <summary>
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
+        /// </summary>
+        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
+        protected YouTubePlaylistContentDetails(JObject json) : base(json) {
+            ItemCount = json.GetInt32("itemCount");
         }
 
         #endregion
@@ -26,12 +33,12 @@ namespace Skybrud.Social.Google.YouTube.Models.Playlists {
         #region Static methods
 
         /// <summary>
-        /// Returns a new <see cref="YouTubePlaylistContentDetails"/> parsed from the specified <paramref name="obj"/>.
+        /// Returns a new <see cref="YouTubePlaylistContentDetails"/> parsed from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubePlaylistContentDetails"/>.</returns>
-        public static YouTubePlaylistContentDetails Parse(JObject obj) {
-            return obj == null ? null : new YouTubePlaylistContentDetails(obj);
+        public static YouTubePlaylistContentDetails Parse(JObject json) {
+            return json == null ? null : new YouTubePlaylistContentDetails(json);
         }
 
         #endregion

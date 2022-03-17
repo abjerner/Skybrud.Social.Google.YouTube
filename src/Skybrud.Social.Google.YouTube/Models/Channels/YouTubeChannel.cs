@@ -49,12 +49,12 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         #region Static methods
 
         /// <summary>
-        /// Returns a new <see cref="YouTubeChannel"/> parsed from the specified <paramref name="obj"/>.
+        /// Returns a new <see cref="YouTubeChannel"/> parsed from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubeChannel"/>.</returns>
-        public static YouTubeChannel Parse(JObject obj) {
-            return obj == null ? null : new YouTubeChannel(obj);
+        public static YouTubeChannel Parse(JObject json) {
+            return json == null ? null : new YouTubeChannel(json);
         }
 
         #endregion

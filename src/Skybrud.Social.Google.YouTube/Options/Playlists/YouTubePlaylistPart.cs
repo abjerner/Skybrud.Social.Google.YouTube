@@ -22,7 +22,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Playlists {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <see cref="str"/> into an instance of <see cref="YouTubePlaylistPart"/>.
+        /// Parses the specified <paramref name="str"/> into an instance of <see cref="YouTubePlaylistPart"/>.
         /// </summary>
         /// <param name="str">The string with the name of the part.</param>
         /// <returns>An instance of <see cref="YouTubePlaylistPart"/> representing the part.</returns>
@@ -32,11 +32,11 @@ namespace Skybrud.Social.Google.YouTube.Options.Playlists {
         }
 
         /// <summary>
-        /// Attempts to parse the specified <see cref="str"/> into an instance of <see cref="YouTubePlaylistPart"/>.
+        /// Attempts to parse the specified <paramref name="str"/> into an instance of <see cref="YouTubePlaylistPart"/>.
         /// </summary>
         /// <param name="str">The string with the name of the part.</param>
         /// <param name="part">The parsed part.</param>
-        /// <returns><c>true</c> if <see cref="str"/> matches a known part, otherwise <c>false</c>.</returns>
+        /// <returns><c>true</c> if <paramref name="str"/> matches a known part, otherwise <c>false</c>.</returns>
         public static bool TryParse(string str, out YouTubePlaylistPart part) {
             part = YouTubePlaylistParts.Values.FirstOrDefault(temp => temp.Name == str);
             return part != null;

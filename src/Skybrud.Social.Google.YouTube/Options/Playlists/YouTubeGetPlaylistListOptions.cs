@@ -61,6 +61,10 @@ namespace Skybrud.Social.Google.YouTube.Options.Playlists {
             ChannelId = channelId;
         }
 
+        /// <summary>
+        /// Initializes a new instance to return playlists of the authenticated user.
+        /// </summary>
+        /// <param name="mine"></param>
         public YouTubeGetPlaylistListOptions(bool mine) {
             Part = YouTubePlaylistParts.Snippet;
             Mine = mine;

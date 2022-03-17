@@ -17,7 +17,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// <summary>
         /// Gets the length of the video.
         /// </summary>
-        public YouTubeVideoDuration Duration { get; private set; }
+        public YouTubeVideoDuration Duration { get; }
         
         /// <summary>
         /// Gets the dimension of the video. Can either be in <c>3D</c> or in <c>2D</c>.
@@ -48,12 +48,12 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// Initializes a new instance from the specified <paramref name="json"/> object.
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
-        protected YouTubeVideoContentDetails(JObject obj) : base(obj) {
-            Duration = obj.GetString("duration", YouTubeVideoDuration.Parse);
-            Dimension = obj.GetString("dimension");
-            Definition = obj.GetString("definition");
-            HasCaption = obj.GetString("caption");
-            IsLicensedContent = obj.GetBoolean("licensedContent");
+        protected YouTubeVideoContentDetails(JObject json) : base(json) {
+            Duration = json.GetString("duration", YouTubeVideoDuration.Parse);
+            Dimension = json.GetString("dimension");
+            Definition = json.GetString("definition");
+            HasCaption = json.GetString("caption");
+            IsLicensedContent = json.GetBoolean("licensedContent");
         }
 
         #endregion
