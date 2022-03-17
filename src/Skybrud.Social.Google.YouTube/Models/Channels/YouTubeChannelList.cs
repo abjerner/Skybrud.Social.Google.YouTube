@@ -27,14 +27,14 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         #endregion
 
         #region Constructors
-
+        
         /// <summary>
-        /// Initializes a new instance based on the specified <paramref name="obj"/>.
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="YouTubeChannelList"/> to be parsed.</param>
-        protected YouTubeChannelList(JObject obj) : base(obj) {
-            PageInfo = obj.GetObject("pageInfo", YouTubePageInfo.Parse);
-            Items = obj.GetArray("items", YouTubeChannel.Parse);
+        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
+        protected YouTubeChannelList(JObject json) : base(json) {
+            PageInfo = json.GetObject("pageInfo", YouTubePageInfo.Parse);
+            Items = json.GetArray("items", YouTubeChannel.Parse);
         }
 
         #endregion
@@ -42,12 +42,12 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         #region Static methods
 
         /// <summary>
-        /// Returns a new <see cref="YouTubeChannelList"/> parsed from the specified <paramref name="obj"/>.
+        /// Returns a new <see cref="YouTubeChannelList"/> parsed from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubeChannelList"/>.</returns>
-        public static YouTubeChannelList Parse(JObject obj) {
-            return obj == null ? null : new YouTubeChannelList(obj);
+        public static YouTubeChannelList Parse(JObject json) {
+            return json == null ? null : new YouTubeChannelList(json);
         }
 
         #endregion

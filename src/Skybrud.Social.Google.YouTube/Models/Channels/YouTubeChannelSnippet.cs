@@ -1,5 +1,4 @@
-﻿using System;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
 using Skybrud.Social.Google.Models;
@@ -47,15 +46,15 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance based on the specified <paramref name="obj"/>.
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="YouTubeChannelSnippet"/> to be parsed.</param>
-        protected YouTubeChannelSnippet(JObject obj) : base(obj) {
-            Title = obj.GetString("title");
-            Description = obj.GetString("description");
-            PublishedAt = obj.GetString("publishedAt", EssentialsTime.Parse);
-            Thumbnails = obj.GetObject("thumbnails", YouTubeChannelThumbnails.Parse);
-            Localized = obj.GetObject("localized", YouTubeChannelLocalized.Parse);
+        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
+        protected  YouTubeChannelSnippet(JObject json) : base(json) {
+            Title = json.GetString("title");
+            Description = json.GetString("description");
+            PublishedAt = json.GetString("publishedAt", EssentialsTime.Parse);
+            Thumbnails = json.GetObject("thumbnails", YouTubeChannelThumbnails.Parse);
+            Localized = json.GetObject("localized", YouTubeChannelLocalized.Parse);
         }
 
         #endregion
@@ -63,12 +62,12 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         #region Static methods
 
         /// <summary>
-        /// Returns a new <see cref="YouTubeChannelSnippet"/> parsed from the specified <paramref name="obj"/>.
+        /// Returns a new <see cref="YouTubeChannelSnippet"/> parsed from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubeChannelSnippet"/>.</returns>
-        public static YouTubeChannelSnippet Parse(JObject obj) {
-            return obj == null ? null : new YouTubeChannelSnippet(obj);
+        public static YouTubeChannelSnippet Parse(JObject json) {
+            return json == null ? null : new YouTubeChannelSnippet(json);
         }
 
         #endregion

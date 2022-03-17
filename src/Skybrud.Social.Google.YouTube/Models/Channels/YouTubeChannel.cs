@@ -17,7 +17,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         /// <summary>
         /// Gets the ID of the channel.
         /// </summary>
-        public string Id { get; private set; }
+        public string Id { get; }
 
         /// <summary>
         /// Gets a reference to the <c>snippet</c> object of the channel, which contains details such as the
@@ -33,15 +33,15 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         #endregion
 
         #region Constructors
-
+        
         /// <summary>
-        /// Initializes a new instance based on the specified <paramref name="obj"/>.
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="YouTubeChannel"/> to be parsed.</param>
-        protected YouTubeChannel(JObject obj) : base(obj) {
-            Id = obj.GetString("id");
-            Snippet = obj.GetObject("snippet", YouTubeChannelSnippet.Parse);
-            Statistics = obj.GetObject("statistics", YouTubeChannelStatistics.Parse);
+        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
+        protected YouTubeChannel(JObject json) : base(json) {
+            Id = json.GetString("id");
+            Snippet = json.GetObject("snippet", YouTubeChannelSnippet.Parse);
+            Statistics = json.GetObject("statistics", YouTubeChannelStatistics.Parse);
         }
 
         #endregion

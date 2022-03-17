@@ -1,4 +1,3 @@
-using System;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
@@ -57,22 +56,29 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         /// </summary>
         public int Position { get; }
 
+        /// <summary>
+        /// Gets information that can be used to uniquely identify the resource that is included in the playlist as the playlist item.
+        /// </summary>
         public YouTubePlaylistItemResourceId ResourceId { get; }
 
         #endregion
         
         #region Constructors
 
-        private YouTubePlaylistItemSnippet(JObject obj) : base(obj) {
-            PublishedAt = obj.GetString("publishedAt", EssentialsTime.Parse);
-            ChannelId = obj.GetString("channelId");
-            Title = obj.GetString("title");
-            Description = obj.GetString("description");
-            Thumbnails = obj.GetObject("thumbnails", YouTubePlaylistItemThumbnails.Parse);
-            ChannelTitle = obj.GetString("channelTitle");
-            PlaylistId = obj.GetString("playlistId");
-            Position = obj.GetInt32("position");
-            ResourceId = obj.GetObject("resourceId", YouTubePlaylistItemResourceId.Parse);
+        /// <summary>
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
+        /// </summary>
+        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
+        protected YouTubePlaylistItemSnippet(JObject json) : base(json) {
+            PublishedAt = json.GetString("publishedAt", EssentialsTime.Parse);
+            ChannelId = json.GetString("channelId");
+            Title = json.GetString("title");
+            Description = json.GetString("description");
+            Thumbnails = json.GetObject("thumbnails", YouTubePlaylistItemThumbnails.Parse);
+            ChannelTitle = json.GetString("channelTitle");
+            PlaylistId = json.GetString("playlistId");
+            Position = json.GetInt32("position");
+            ResourceId = json.GetObject("resourceId", YouTubePlaylistItemResourceId.Parse);
         }
 
         #endregion
@@ -80,12 +86,12 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         #region Static methods
 
         /// <summary>
-        /// Returns a new <see cref="YouTubePlaylistItemSnippet"/> parsed from the specified <paramref name="obj"/>.
+        /// Returns a new <see cref="YouTubePlaylistItemSnippet"/> parsed from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubePlaylistItemSnippet"/>.</returns>
-        public static YouTubePlaylistItemSnippet Parse(JObject obj) {
-            return obj == null ? null : new YouTubePlaylistItemSnippet(obj);
+        public static YouTubePlaylistItemSnippet Parse(JObject json) {
+            return json == null ? null : new YouTubePlaylistItemSnippet(json);
         }
 
         #endregion

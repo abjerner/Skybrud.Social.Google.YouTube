@@ -44,15 +44,15 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance based on the specified <paramref name="obj"/>.
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="YouTubeChannelStatistics"/> to be parsed.</param>
-        protected YouTubeChannelStatistics(JObject obj) : base(obj) {
-            ViewCount = obj.GetInt64("viewCount");
-            CommentCount = obj.GetInt64("commentCount");
-            SubscriberCount = obj.GetInt64("subscriberCount");
-            HiddenSubscriberCount = obj.GetBoolean("hiddenSubscriberCount");
-            VideoCount = obj.GetInt64("videoCount");
+        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
+        protected YouTubeChannelStatistics(JObject json) : base(json) {
+            ViewCount = json.GetInt64("viewCount");
+            CommentCount = json.GetInt64("commentCount");
+            SubscriberCount = json.GetInt64("subscriberCount");
+            HiddenSubscriberCount = json.GetBoolean("hiddenSubscriberCount");
+            VideoCount = json.GetInt64("videoCount");
         }
 
         #endregion
@@ -60,12 +60,12 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         #region Static methods
 
         /// <summary>
-        /// Returns a new <see cref="YouTubeChannelStatistics"/> parsed from the specified <paramref name="obj"/>.
+        /// Returns a new <see cref="YouTubeChannelStatistics"/> parsed from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubeChannelStatistics"/>.</returns>
-        public static YouTubeChannelStatistics Parse(JObject obj) {
-            return obj == null ? null : new YouTubeChannelStatistics(obj);
+        public static YouTubeChannelStatistics Parse(JObject json) {
+            return json == null ? null : new YouTubeChannelStatistics(json);
         }
 
         #endregion

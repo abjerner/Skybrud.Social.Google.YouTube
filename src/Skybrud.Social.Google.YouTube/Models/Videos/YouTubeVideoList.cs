@@ -33,7 +33,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         public YouTubePageInfo PageInfo { get; }
 
         /// <summary>
-        /// gets an array of the videos returned in the response.
+        /// Gets an array of the videos returned in the response.
         /// </summary>
         public YouTubeVideo[] Items { get; }
 

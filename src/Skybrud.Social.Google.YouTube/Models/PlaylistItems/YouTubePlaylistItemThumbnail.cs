@@ -11,20 +11,33 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
 
         #region Properties
 
+        /// <summary>
+        /// Gets the image's URL.
+        /// </summary>
         public string Url { get; }
 
+        /// <summary>
+        /// Gets the image's width.
+        /// </summary>
         public int Width { get; }
 
+        /// <summary>
+        /// Gets the image's height.
+        /// </summary>
         public int Height { get; }
 
         #endregion
 
         #region Constructors
 
-        protected YouTubePlaylistItemThumbnail(JObject obj) : base(obj) {
-            Url = obj.GetString("url");
-            Width = obj.GetInt32("width");
-            Height = obj.GetInt32("height");
+        /// <summary>
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
+        /// </summary>
+        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
+        protected YouTubePlaylistItemThumbnail(JObject json) : base(json) {
+            Url = json.GetString("url");
+            Width = json.GetInt32("width");
+            Height = json.GetInt32("height");
         }
 
         #endregion
@@ -32,12 +45,12 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         #region Static methods
 
         /// <summary>
-        /// Returns a new <see cref="YouTubePlaylistItemThumbnail"/> parsed from the specified <paramref name="obj"/>.
+        /// Returns a new <see cref="YouTubePlaylistItemThumbnail"/> parsed from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubePlaylistItemThumbnail"/>.</returns>
-        public static YouTubePlaylistItemThumbnail Parse(JObject obj) {
-            return obj == null ? null : new YouTubePlaylistItemThumbnail(obj);
+        public static YouTubePlaylistItemThumbnail Parse(JObject json) {
+            return json == null ? null : new YouTubePlaylistItemThumbnail(json);
         }
 
         #endregion

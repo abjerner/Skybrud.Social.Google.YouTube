@@ -12,16 +12,23 @@ namespace Skybrud.Social.Google.YouTube.Models.Playlists {
 
         #region Properties
 
+        /// <summary>
+        /// Gets the playlist's privacy status.
+        /// </summary>
         public YouTubePrivacyStatus PrivacyStatus { get; }
 
         #endregion
 
         #region Constructor
 
-        protected YouTubePlaylistStatus(JObject obj) : base(obj) {
+        /// <summary>
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
+        /// </summary>
+        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
+        protected YouTubePlaylistStatus(JObject json) : base(json) {
 
             // Parse the privacy status
-            string strStatus = obj.GetString("privacyStatus");
+            string strStatus = json.GetString("privacyStatus");
             if (!Enum.TryParse(strStatus, true, out YouTubePrivacyStatus status)) {
                 throw new Exception("Unknown privacy status \"" + strStatus + "\" - please create an issue so it can be fixed https://github.com/abjerner/Skybrud.Social/issues/new");
             }
@@ -35,12 +42,12 @@ namespace Skybrud.Social.Google.YouTube.Models.Playlists {
         #region Static methods
 
         /// <summary>
-        /// Returns a new <see cref="YouTubePlaylistStatus"/> parsed from the specified <paramref name="obj"/>.
+        /// Returns a new <see cref="YouTubePlaylistStatus"/> parsed from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubePlaylistStatus"/>.</returns>
-        public static YouTubePlaylistStatus Parse(JObject obj) {
-            return obj == null ? null : new YouTubePlaylistStatus(obj);
+        public static YouTubePlaylistStatus Parse(JObject json) {
+            return json == null ? null : new YouTubePlaylistStatus(json);
         }
 
         #endregion

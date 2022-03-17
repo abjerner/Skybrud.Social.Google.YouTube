@@ -59,11 +59,15 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
 
         #region Constructors
 
-        private YouTubePlaylistItem(JObject obj) : base(obj) {
-            Id = obj.GetString("id");
-            Snippet = obj.GetObject("snippet", YouTubePlaylistItemSnippet.Parse);
-            ContentDetails = obj.GetObject("contentDetails", YouTubePlaylistItemContentDetails.Parse);
-            Status = obj.GetObject("status", YouTubePlaylistItemStatus.Parse);
+        /// <summary>
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
+        /// </summary>
+        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
+        protected YouTubePlaylistItem(JObject json) : base(json) {
+            Id = json.GetString("id");
+            Snippet = json.GetObject("snippet", YouTubePlaylistItemSnippet.Parse);
+            ContentDetails = json.GetObject("contentDetails", YouTubePlaylistItemContentDetails.Parse);
+            Status = json.GetObject("status", YouTubePlaylistItemStatus.Parse);
         }
 
         #endregion
@@ -71,12 +75,12 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         #region Static methods
 
         /// <summary>
-        /// Returns a new <see cref="YouTubePlaylistItem"/> parsed from the specified <paramref name="obj"/>.
+        /// Returns a new <see cref="YouTubePlaylistItem"/> parsed from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubePlaylistItem"/>.</returns>
-        public static YouTubePlaylistItem Parse(JObject obj) {
-            return obj == null ? null : new YouTubePlaylistItem(obj);
+        public static YouTubePlaylistItem Parse(JObject json) {
+            return json == null ? null : new YouTubePlaylistItem(json);
         }
 
         #endregion

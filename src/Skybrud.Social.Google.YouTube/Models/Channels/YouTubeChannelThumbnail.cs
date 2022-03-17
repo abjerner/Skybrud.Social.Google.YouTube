@@ -26,8 +26,12 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
 
         #region Constructors
 
-        private YouTubeChannelThumbnail(JObject obj) : base(obj) {
-            Url = obj.GetString("url");
+        /// <summary>
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
+        /// </summary>
+        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
+        protected  YouTubeChannelThumbnail(JObject json) : base(json) {
+            Url = json.GetString("url");
         }
 
         #endregion
@@ -35,12 +39,12 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         #region Static methods
 
         /// <summary>
-        /// Returns a new <see cref="YouTubeChannelThumbnail"/> parsed from the specified <paramref name="obj"/>.
+        /// Returns a new <see cref="YouTubeChannelThumbnail"/> parsed from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubeChannelThumbnail"/>.</returns>
-        public static YouTubeChannelThumbnail Parse(JObject obj) {
-            return obj == null ? null : new YouTubeChannelThumbnail(obj);
+        public static YouTubeChannelThumbnail Parse(JObject json) {
+            return json == null ? null : new YouTubeChannelThumbnail(json);
         }
 
         #endregion

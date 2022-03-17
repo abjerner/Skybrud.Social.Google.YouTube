@@ -11,17 +11,28 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
 
         #region Properties
         
+        /// <summary>
+        /// Gets the kind, or type, of the referred resource.
+        /// </summary>
         public string Kind { get; }
         
+        /// <summary>
+        /// If the <c>snippet.resourceId.kind</c> property's value is <c>youtube#video</c>, then this property will be
+        /// present and its value will contain the ID that YouTube uses to uniquely identify the video in the playlist.
+        /// </summary>
         public string VideoId { get; }
 
         #endregion
         
         #region Constructors
 
-        private YouTubePlaylistItemResourceId(JObject obj) : base(obj) {
-            Kind = obj.GetString("kind");
-            VideoId = obj.GetString("videoId");
+        /// <summary>
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
+        /// </summary>
+        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
+        protected YouTubePlaylistItemResourceId(JObject json) : base(json) {
+            Kind = json.GetString("kind");
+            VideoId = json.GetString("videoId");
         }
 
         #endregion
@@ -29,12 +40,12 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         #region Static methods
 
         /// <summary>
-        /// Returns a new <see cref="YouTubePlaylistItemResourceId"/> parsed from the specified <paramref name="obj"/>.
+        /// Returns a new <see cref="YouTubePlaylistItemResourceId"/> parsed from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubePlaylistItemResourceId"/>.</returns>
-        public static YouTubePlaylistItemResourceId Parse(JObject obj) {
-            return obj == null ? null : new YouTubePlaylistItemResourceId(obj);
+        public static YouTubePlaylistItemResourceId Parse(JObject json) {
+            return json == null ? null : new YouTubePlaylistItemResourceId(json);
         }
 
         #endregion

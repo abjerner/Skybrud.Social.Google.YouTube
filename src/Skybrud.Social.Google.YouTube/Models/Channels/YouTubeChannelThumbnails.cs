@@ -32,11 +32,15 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         #endregion
 
         #region Constructors
-
-        private YouTubeChannelThumbnails(JObject obj) : base(obj) {
-            Default = obj.GetObject("default", YouTubeChannelThumbnail.Parse);
-            Medium = obj.GetObject("medium", YouTubeChannelThumbnail.Parse);
-            High = obj.GetObject("high", YouTubeChannelThumbnail.Parse);
+        
+        /// <summary>
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
+        /// </summary>
+        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
+        protected YouTubeChannelThumbnails(JObject json) : base(json) {
+            Default = json.GetObject("default", YouTubeChannelThumbnail.Parse);
+            Medium = json.GetObject("medium", YouTubeChannelThumbnail.Parse);
+            High = json.GetObject("high", YouTubeChannelThumbnail.Parse);
         }
 
         #endregion
@@ -44,12 +48,12 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         #region Static methods
 
         /// <summary>
-        /// Returns a new <see cref="YouTubeChannelThumbnails"/> parsed from the specified <paramref name="obj"/>.
+        /// Returns a new <see cref="YouTubeChannelThumbnails"/> parsed from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubeChannelThumbnails"/>.</returns>
-        public static YouTubeChannelThumbnails Parse(JObject obj) {
-            return obj == null ? null : new YouTubeChannelThumbnails(obj);
+        public static YouTubeChannelThumbnails Parse(JObject json) {
+            return json == null ? null : new YouTubeChannelThumbnails(json);
         }
 
         #endregion
