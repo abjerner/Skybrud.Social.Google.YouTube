@@ -3,7 +3,7 @@ using Skybrud.Social.Google.YouTube.Http;
 
 namespace Skybrud.Social.Google.YouTube {
 
-    public class YouTubeService : GoogleHttpServiceBase {
+    public class YouTubeHttpService : GoogleHttpServiceBase {
 
         #region Properties
 
@@ -36,7 +36,7 @@ namespace Skybrud.Social.Google.YouTube {
 
         #region Constructors
 
-        internal YouTubeService(GoogleHttpService service) : base(service) {
+        internal YouTubeHttpService(GoogleHttpService service) : base(service) {
             Channels = new YouTubeChannelsEndpoint(this);
             Playlists = new YouTubePlaylistsEndpoint(this);
             PlaylistItems = new YouTubePlaylistItemsEndpoint(this);

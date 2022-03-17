@@ -15,7 +15,7 @@ namespace Skybrud.Social.Google.YouTube.Endpoints {
         /// <summary>
         /// Gets a reference to the YouTube service implementation.
         /// </summary>
-        public YouTubeService Service { get; }
+        public YouTubeHttpService Service { get; }
 
         /// <summary>
         /// Gets a reference to the raw endpoint.
@@ -26,7 +26,7 @@ namespace Skybrud.Social.Google.YouTube.Endpoints {
 
         #region Constructors
 
-        internal YouTubeVideosEndpoint(YouTubeService service) {
+        internal YouTubeVideosEndpoint(YouTubeHttpService service) {
             Service = service;
         }
 

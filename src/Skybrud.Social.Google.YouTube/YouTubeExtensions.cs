@@ -11,9 +11,9 @@ namespace Skybrud.Social.Google.YouTube {
             return client.GetApiClient(() => new YouTubeHttpClient(client));
         }
 
-        public static YouTubeService YouTube(this GoogleHttpService service) {
+        public static YouTubeHttpService YouTube(this GoogleHttpService service) {
             if (service == null) throw new ArgumentNullException(nameof(service));
-            return service.GetApiService(() => new YouTubeService(service));
+            return service.GetApiService(() => new YouTubeHttpService(service));
         }
 
     }
