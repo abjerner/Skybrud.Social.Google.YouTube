@@ -23,7 +23,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// <summary>
         /// Gets the dimension of the video. Can either be in <c>3D</c> or in <c>2D</c>.
         /// </summary>
-        public string Dimension { get; }
+        public YouTubeVideoDimension Dimension { get; }
 
         /// <summary>
         /// Gets whether the video is available in high definition (HD) or only standard definition (SD). Can be either <c>hd</c> or <c>sd</c>.
@@ -51,7 +51,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
         protected YouTubeVideoContentDetails(JObject json) : base(json) {
             Duration = json.GetString("duration", YouTubeVideoDuration.Parse);
-            Dimension = json.GetString("dimension");
+            Dimension = json.GetString("dimension", ParseDimension);
             Definition = json.GetString("definition", ParseDefinition);
             HasCaption = json.GetBoolean("caption");
             IsLicensedContent = json.GetBoolean("licensedContent");
@@ -68,6 +68,17 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// <returns>An instance of <see cref="YouTubeVideoContentDetails"/>.</returns>
         public static YouTubeVideoContentDetails Parse(JObject json) {
             return json == null ? null : new YouTubeVideoContentDetails(json);
+        }
+
+        private static YouTubeVideoDimension ParseDimension(string value) {
+            switch (value) {
+                case "2d":
+                    return YouTubeVideoDimension.TwoDimensional;
+                case "3d":
+                    return YouTubeVideoDimension.ThreeDimensional;
+                default:
+                    throw new Exception($"Unknown video dimension '{value}' - please create an issue so it can be fixed {YouTubeConstants.NewIssueUrl}");
+            }
         }
 
         private static YouTubeVideoDefinition ParseDefinition(string value) {
