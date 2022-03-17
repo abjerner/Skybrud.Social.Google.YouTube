@@ -14,7 +14,7 @@ namespace Skybrud.Social.Google.YouTube.Options.PlaylistItems {
         /// <summary>
         /// Gets or sets which properties that should be returned.
         /// </summary>
-        public YouTubePlaylistItemPartsCollection Part { get; set; }
+        public YouTubePlaylistItemPartList Part { get; set; }
 
         /// <summary>
         /// Gets or sets a list of IDs for the playlist items to be returned.

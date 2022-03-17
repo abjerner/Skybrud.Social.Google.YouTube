@@ -40,16 +40,14 @@ namespace Skybrud.Social.Google.YouTube.Options.Channels {
         /// <summary>
         /// Gets a collection of all parts available for a YouTube channel.
         /// </summary>
-        public static readonly YouTubeChannelPartsCollection All = new YouTubeChannelPartsCollection(
+        public static readonly YouTubeChannelPartList All = new YouTubeChannelPartList(
             Id, Snippet, ContentDetails, Statistics, Status, TopicDetails
         );
 
         /// <summary>
         /// Gets an array of <see cref="YouTubeChannelPart"/> representing all parts available for a YouTube channel.
         /// </summary>
-        public static YouTubeChannelPart[] Values {
-            get { return All.ToArray(); }
-        }
+        public static YouTubeChannelPart[] Values => All.ToArray();
 
         #endregion
     

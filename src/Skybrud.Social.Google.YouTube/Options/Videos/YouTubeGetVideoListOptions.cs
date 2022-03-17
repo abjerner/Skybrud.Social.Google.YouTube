@@ -15,7 +15,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Videos {
         /// <summary>
         /// Gets or sets which properties that should be returned.
         /// </summary>
-        public YouTubeVideoPartsCollection Part { get; set; }
+        public YouTubeVideoPartList Part { get; set; }
 
         /// <summary>
         /// Gets or sets a list of IDs for the videos to be returned.

@@ -70,7 +70,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Videos {
         /// <summary>
         /// Gets a collection of all parts available for a YouTube video.
         /// </summary>
-        public static readonly YouTubeVideoPartsCollection All = new YouTubeVideoPartsCollection(
+        public static readonly YouTubeVideoPartList All = new YouTubeVideoPartList(
             Id, Snippet, ContentDetails, FileDetails, LiveStreamingDetails, Localizations, ProcessingDetails,
             RecordingDetails, Statistics, Status, Suggestions, TopicDetails
         );

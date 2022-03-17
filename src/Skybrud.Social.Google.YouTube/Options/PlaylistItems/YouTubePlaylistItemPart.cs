@@ -50,7 +50,7 @@ namespace Skybrud.Social.Google.YouTube.Options.PlaylistItems {
         /// Initializes a new part with the specified <paramref name="name"/>.
         /// </summary>
         /// <param name="name">The name of the scope.</param>
-        /// <returns>An instance of <see cref="YouTubePlaylistItemPartsCollection"/>.</returns>
+        /// <returns>An instance of <see cref="YouTubePlaylistItemPartList"/>.</returns>
         public static implicit operator YouTubePlaylistItemPart(string name) {
             return Parse(name);
         }
@@ -60,9 +60,9 @@ namespace Skybrud.Social.Google.YouTube.Options.PlaylistItems {
         /// </summary>
         /// <param name="left">The part to the left of the operator.</param>
         /// <param name="right">The part to the right of the operator.</param>
-        /// <returns>An instance of <see cref="YouTubePlaylistItemPartsCollection"/>.</returns>
-        public static YouTubePlaylistItemPartsCollection operator +(YouTubePlaylistItemPart left, YouTubePlaylistItemPart right) {
-            return new YouTubePlaylistItemPartsCollection(left, right);
+        /// <returns>An instance of <see cref="YouTubePlaylistItemPartList"/>.</returns>
+        public static YouTubePlaylistItemPartList operator +(YouTubePlaylistItemPart left, YouTubePlaylistItemPart right) {
+            return new YouTubePlaylistItemPartList(left, right);
         }
 
         #endregion

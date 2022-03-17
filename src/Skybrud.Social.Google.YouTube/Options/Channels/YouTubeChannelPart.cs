@@ -62,8 +62,8 @@ namespace Skybrud.Social.Google.YouTube.Options.Channels {
         /// </summary>
         /// <param name="left">The part to the left of the operator.</param>
         /// <param name="right">The part to the right of the operator.</param>
-        public static YouTubeChannelPartsCollection operator +(YouTubeChannelPart left, YouTubeChannelPart right) {
-            return new YouTubeChannelPartsCollection(left, right);
+        public static YouTubeChannelPartList operator +(YouTubeChannelPart left, YouTubeChannelPart right) {
+            return new YouTubeChannelPartList(left, right);
         }
 
         #endregion

@@ -30,7 +30,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Playlists {
         /// <summary>
         /// Gets a collection of all parts available for a YouTube channel.
         /// </summary>
-        public static readonly YouTubePlaylistPartsCollection All = new YouTubePlaylistPartsCollection(
+        public static readonly YouTubePlaylistPartList All = new YouTubePlaylistPartList(
             Id, Snippet, Status, ContentDetails
         );
 

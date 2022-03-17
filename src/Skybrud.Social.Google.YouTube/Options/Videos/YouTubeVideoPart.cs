@@ -59,8 +59,8 @@ namespace Skybrud.Social.Google.YouTube.Options.Videos {
         /// </summary>
         /// <param name="left">The part to the left of the operator.</param>
         /// <param name="right">The part to the right of the operator.</param>
-        public static YouTubeVideoPartsCollection operator +(YouTubeVideoPart left, YouTubeVideoPart right) {
-            return new YouTubeVideoPartsCollection(left, right);
+        public static YouTubeVideoPartList operator +(YouTubeVideoPart left, YouTubeVideoPart right) {
+            return new YouTubeVideoPartList(left, right);
         }
 
         #endregion

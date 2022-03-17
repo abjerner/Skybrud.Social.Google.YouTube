@@ -1,17 +1,19 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Skybrud.Social.Google.YouTube.Options.PlaylistItems {
+namespace Skybrud.Social.Google.YouTube.Options.Channels {
 
+    /// <summary>
+    /// Class representing a collection of <see cref="YouTubeChannelPart"/>.
+    /// </summary>
     /// <see>
-    ///     <cref>https://developers.google.com/youtube/v3/docs/playlistItems/list#part</cref>
+    ///     <cref>https://developers.google.com/youtube/v3/docs/channels/list#part</cref>
     /// </see>
-    public class YouTubePlaylistItemPartsCollection {
+    public class YouTubeChannelPartList {
 
         #region Private fields
 
-        private readonly List<YouTubePlaylistItemPart> _list = new List<YouTubePlaylistItemPart>();
+        private readonly List<YouTubeChannelPart> _list = new List<YouTubeChannelPart>();
 
         #endregion
 
@@ -29,13 +31,13 @@ namespace Skybrud.Social.Google.YouTube.Options.PlaylistItems {
         /// <summary>
         /// Initializes an empty collection.
         /// </summary>
-        public YouTubePlaylistItemPartsCollection() { }
+        public YouTubeChannelPartList() { }
 
         /// <summary>
         /// Initializes a collection containing the specified <paramref name="parts"/>.
         /// </summary>
         /// <param name="parts">The parts to add.</param>
-        public YouTubePlaylistItemPartsCollection(params YouTubePlaylistItemPart[] parts) {
+        public YouTubeChannelPartList(params YouTubeChannelPart[] parts) {
             _list.AddRange(parts);
         }
 
@@ -43,7 +45,7 @@ namespace Skybrud.Social.Google.YouTube.Options.PlaylistItems {
         /// Initializes a collection containing the specified <paramref name="parts"/>.
         /// </summary>
         /// <param name="parts">The parts to add.</param>
-        public YouTubePlaylistItemPartsCollection(IEnumerable<YouTubePlaylistItemPart> parts) {
+        public YouTubeChannelPartList(IEnumerable<YouTubeChannelPart> parts) {
             _list.AddRange(parts);
         }
 
@@ -55,7 +57,7 @@ namespace Skybrud.Social.Google.YouTube.Options.PlaylistItems {
         /// Adds the specified <paramref name="part"/> to the collection.
         /// </summary>
         /// <param name="part">The part to add.</param>
-        public void Add(YouTubePlaylistItemPart part) {
+        public void Add(YouTubeChannelPart part) {
             _list.Add(part);
         }
 
@@ -63,15 +65,15 @@ namespace Skybrud.Social.Google.YouTube.Options.PlaylistItems {
         /// Adds the specified range of <paramref name="parts"/> to the collection.
         /// </summary>
         /// <param name="parts">The parts to add.</param>
-        public void AddRange(IEnumerable<YouTubePlaylistItemPart> parts) {
+        public void AddRange(IEnumerable<YouTubeChannelPart> parts) {
             _list.AddRange(parts);
         }
 
         /// <summary>
         /// Gets an array of the parts currently in the collection.
         /// </summary>
-        /// <returns>An array of <see cref="YouTubePlaylistItemPart"/> representing the parts of the collection.</returns>
-        public YouTubePlaylistItemPart[] ToArray() {
+        /// <returns>An array of <see cref="YouTubeChannelPart"/> representing the parts of the collection.</returns>
+        public YouTubeChannelPart[] ToArray() {
             return _list.ToArray();
         }
 
@@ -98,19 +100,19 @@ namespace Skybrud.Social.Google.YouTube.Options.PlaylistItems {
         /// <summary>
         /// Initializes a new collection from the specified <paramref name="part"/>.
         /// </summary>
-        /// <param name="part">The instance of <see cref="YouTubePlaylistItemPart"/> representing the part.</param>
-        /// <returns>An instance of <see cref="YouTubePlaylistItemPartsCollection"/>.</returns>
-        public static implicit operator YouTubePlaylistItemPartsCollection(YouTubePlaylistItemPart part) {
-            return new YouTubePlaylistItemPartsCollection(part);
+        /// <param name="part">The instance of <see cref="YouTubeChannelPart"/> representing the part.</param>
+        /// <returns>An instance of <see cref="YouTubeChannelPartList"/>.</returns>
+        public static implicit operator YouTubeChannelPartList(YouTubeChannelPart part) {
+            return new YouTubeChannelPartList(part);
         }
 
         /// <summary>
         /// Initializes a new collection from the specified <paramref name="parts"/>.
         /// </summary>
-        /// <param name="parts">An array of <see cref="YouTubePlaylistItemPart"/> representing the parts.</param>
-        /// <returns>An instance of <see cref="YouTubePlaylistItemPartsCollection"/>.</returns>
-        public static implicit operator YouTubePlaylistItemPartsCollection(YouTubePlaylistItemPart[] parts) {
-            return new YouTubePlaylistItemPartsCollection(parts);
+        /// <param name="parts">An array of <see cref="YouTubeChannelPart"/> representing the parts.</param>
+        /// <returns>An instance of <see cref="YouTubeChannelPartList"/>.</returns>
+        public static implicit operator YouTubeChannelPartList(YouTubeChannelPart[] parts) {
+            return new YouTubeChannelPartList(parts);
         }
 
         /// <summary>
@@ -118,8 +120,8 @@ namespace Skybrud.Social.Google.YouTube.Options.PlaylistItems {
         /// </summary>
         /// <param name="collection">The collection to which <paramref name="part"/> should be added.</param>
         /// <param name="part">The part to be added to <paramref name="collection"/>.</param>
-        /// <returns>An instance of <see cref="YouTubePlaylistItemPartsCollection"/>.</returns>
-        public static YouTubePlaylistItemPartsCollection operator +(YouTubePlaylistItemPartsCollection collection, YouTubePlaylistItemPart part) {
+        /// <returns>An instance of <see cref="YouTubeChannelPartList"/>.</returns>
+        public static YouTubeChannelPartList operator +(YouTubeChannelPartList collection, YouTubeChannelPart part) {
             collection.Add(part);
             return collection;
         }
@@ -128,9 +130,9 @@ namespace Skybrud.Social.Google.YouTube.Options.PlaylistItems {
         /// Initializes a new collection from the specified string array of <paramref name="parts"/>.
         /// </summary>
         /// <param name="parts">A string array of the parts that should make up the collection.</param>
-        /// <returns>An instance of <see cref="YouTubePlaylistItemPartsCollection"/>.</returns>
-        public static implicit operator YouTubePlaylistItemPartsCollection(string[] parts) {
-            return new YouTubePlaylistItemPartsCollection(from YouTubePlaylistItemPart part in parts select part);
+        /// <returns>An instance of <see cref="YouTubeChannelPartList"/>.</returns>
+        public static implicit operator YouTubeChannelPartList(string[] parts) {
+            return new YouTubeChannelPartList(from YouTubeChannelPart part in parts select part);
         }
 
         #endregion

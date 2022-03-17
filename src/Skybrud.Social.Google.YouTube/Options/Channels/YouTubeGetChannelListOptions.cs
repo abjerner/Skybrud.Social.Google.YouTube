@@ -14,7 +14,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Channels {
         /// <summary>
         /// Gets or sets which properties that should be returned.
         /// </summary>
-        public YouTubeChannelPartsCollection Part { get; set; }
+        public YouTubeChannelPartList Part { get; set; }
 
         /// <summary>
         /// Gets or sets whether only channel(s) with this username should be returned.
