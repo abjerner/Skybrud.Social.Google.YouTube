@@ -1,3 +1,4 @@
+using System;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.Google.Models;
@@ -27,7 +28,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// <summary>
         /// Gets whether the video is available in high definition (HD) or only standard definition (SD). Can be either <c>hd</c> or <c>sd</c>.
         /// </summary>
-        public string Definition { get; }
+        public YouTubeVideoDefinition Definition { get; }
         
         /// <summary>
         /// Gets whether the video has captions. Can be either <c>true</c> or <c>false</c>.
@@ -51,7 +52,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         protected YouTubeVideoContentDetails(JObject json) : base(json) {
             Duration = json.GetString("duration", YouTubeVideoDuration.Parse);
             Dimension = json.GetString("dimension");
-            Definition = json.GetString("definition");
+            Definition = json.GetString("definition", ParseDefinition);
             HasCaption = json.GetString("caption");
             IsLicensedContent = json.GetBoolean("licensedContent");
         }
@@ -67,6 +68,17 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// <returns>An instance of <see cref="YouTubeVideoContentDetails"/>.</returns>
         public static YouTubeVideoContentDetails Parse(JObject json) {
             return json == null ? null : new YouTubeVideoContentDetails(json);
+        }
+
+        private static YouTubeVideoDefinition ParseDefinition(string value) {
+            switch (value) {
+                case "hd":
+                    return YouTubeVideoDefinition.HighDefinition;
+                case "sd":
+                    return YouTubeVideoDefinition.StandardDefinition;
+                default:
+                    throw new Exception($"Unknown video definition '{value}' - please create an issue so it can be fixed {YouTubeConstants.NewIssueUrl}");
+            }
         }
 
         #endregion
