@@ -18,14 +18,20 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// Gets the ID of the video.
         /// </summary>
         public string Id { get; }
-
+        
+        /// <summary>
+        /// Gets a reference to the <strong>snippet</strong> part of the video.
+        /// </summary>
         public YouTubeVideoSnippet Snippet { get; }
 
         /// <summary>
         /// Gets whether the <see cref="Snippet"/> property was included in the response.
         /// </summary>
         public bool HasSnippet => Snippet != null;
-
+        
+        /// <summary>
+        /// Gets a reference to the <strong>contentDetails</strong> part of the video.
+        /// </summary>
         public YouTubeVideoContentDetails ContentDetails { get; }
 
         /// <summary>
@@ -50,13 +56,17 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         #endregion
 
         #region Constructors
-
-        private YouTubeVideo(JObject obj) : base(obj) {
-            Id = obj.GetString("id");
-            Snippet = obj.GetObject("snippet", YouTubeVideoSnippet.Parse);
-            ContentDetails = obj.GetObject("contentDetails", YouTubeVideoContentDetails.Parse);
-            Status = obj.GetObject("status", YouTubeVideoStatus.Parse);
-            Statistics = obj.GetObject("statistics", YouTubeVideoStatistics.Parse);
+        
+        /// <summary>
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
+        /// </summary>
+        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
+        protected YouTubeVideo(JObject json) : base(json) {
+            Id = json.GetString("id");
+            Snippet = json.GetObject("snippet", YouTubeVideoSnippet.Parse);
+            ContentDetails = json.GetObject("contentDetails", YouTubeVideoContentDetails.Parse);
+            Status = json.GetObject("status", YouTubeVideoStatus.Parse);
+            Statistics = json.GetObject("statistics", YouTubeVideoStatistics.Parse);
         }
 
         #endregion
@@ -64,12 +74,12 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         #region Static methods
 
         /// <summary>
-        /// Returns a new <see cref="YouTubeVideo"/> parsed from the specified <paramref name="obj"/>.
+        /// Returns a new <see cref="YouTubeVideo"/> parsed from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubeVideo"/>.</returns>
-        public static YouTubeVideo Parse(JObject obj) {
-            return obj == null ? null : new YouTubeVideo(obj);
+        public static YouTubeVideo Parse(JObject json) {
+            return json == null ? null : new YouTubeVideo(json);
         }
 
         #endregion

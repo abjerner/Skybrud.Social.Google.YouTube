@@ -51,6 +51,9 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// </summary>
         public string[] Tags { get; }
 
+        /// <summary>
+        /// Gets the ID of the category.
+        /// </summary>
         public string CategoryId { get; }
 
         /// <summary>
@@ -62,7 +65,11 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         
         #region Constructors
 
-        private YouTubeVideoSnippet(JObject obj) : base(obj) {
+        /// <summary>
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
+        /// </summary>
+        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
+        protected YouTubeVideoSnippet(JObject obj) : base(obj) {
 
             // Parse the "liveBroadcastContent" property
             string strBroadcast = obj.GetString("liveBroadcastContent");

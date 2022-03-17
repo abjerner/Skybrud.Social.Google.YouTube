@@ -32,7 +32,11 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         #endregion
 
         #region Constructors
-
+        
+        /// <summary>
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
+        /// </summary>
+        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
         protected YouTubeVideoThumbnail(JObject obj) : base(obj) {
             Url = obj.GetString("url");
             Width = obj.GetInt32("width");

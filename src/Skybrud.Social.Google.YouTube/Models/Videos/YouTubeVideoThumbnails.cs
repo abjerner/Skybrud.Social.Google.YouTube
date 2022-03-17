@@ -69,13 +69,17 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         #endregion
 
         #region Constructors
-
-        protected YouTubeVideoThumbnails(JObject obj) : base(obj) {
-            Default = obj.GetObject("default", YouTubeVideoThumbnail.Parse);
-            Medium = obj.GetObject("medium", YouTubeVideoThumbnail.Parse);
-            High = obj.GetObject("high", YouTubeVideoThumbnail.Parse);
-            Standard = obj.GetObject("standard", YouTubeVideoThumbnail.Parse);
-            MaxRes = obj.GetObject("maxres", YouTubeVideoThumbnail.Parse);
+        
+        /// <summary>
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
+        /// </summary>
+        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
+        protected YouTubeVideoThumbnails(JObject json) : base(json) {
+            Default = json.GetObject("default", YouTubeVideoThumbnail.Parse);
+            Medium = json.GetObject("medium", YouTubeVideoThumbnail.Parse);
+            High = json.GetObject("high", YouTubeVideoThumbnail.Parse);
+            Standard = json.GetObject("standard", YouTubeVideoThumbnail.Parse);
+            MaxRes = json.GetObject("maxres", YouTubeVideoThumbnail.Parse);
         }
 
         #endregion
@@ -83,12 +87,12 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         #region Static methods
 
         /// <summary>
-        /// Returns a new <see cref="YouTubeVideoThumbnails"/> parsed from the specified <paramref name="obj"/>.
+        /// Returns a new <see cref="YouTubeVideoThumbnails"/> parsed from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubeVideoThumbnails"/>.</returns>
-        public static YouTubeVideoThumbnails Parse(JObject obj) {
-            return obj == null ? null : new YouTubeVideoThumbnails(obj);
+        public static YouTubeVideoThumbnails Parse(JObject json) {
+            return json == null ? null : new YouTubeVideoThumbnails(json);
         }
 
         #endregion

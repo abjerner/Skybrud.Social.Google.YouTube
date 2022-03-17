@@ -1,4 +1,6 @@
-﻿namespace Skybrud.Social.Google.YouTube.Models.Videos {
+﻿#pragma warning disable 1591
+
+namespace Skybrud.Social.Google.YouTube.Models.Videos {
 
     /// <summary>
     /// Enum class representing the reason why the upload of a YouTube video failed.

@@ -43,8 +43,12 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         #endregion
         
         #region Constructors
-
-        private YouTubeVideoContentDetails(JObject obj) : base(obj) {
+        
+        /// <summary>
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
+        /// </summary>
+        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
+        protected YouTubeVideoContentDetails(JObject obj) : base(obj) {
             Duration = obj.GetString("duration", YouTubeVideoDuration.Parse);
             Dimension = obj.GetString("dimension");
             Definition = obj.GetString("definition");
@@ -57,12 +61,12 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         #region Static methods
 
         /// <summary>
-        /// Returns a new <see cref="YouTubeVideoContentDetails"/> parsed from the specified <paramref name="obj"/>.
+        /// Returns a new <see cref="YouTubeVideoContentDetails"/> parsed from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubeVideoContentDetails"/>.</returns>
-        public static YouTubeVideoContentDetails Parse(JObject obj) {
-            return obj == null ? null : new YouTubeVideoContentDetails(obj);
+        public static YouTubeVideoContentDetails Parse(JObject json) {
+            return json == null ? null : new YouTubeVideoContentDetails(json);
         }
 
         #endregion

@@ -14,26 +14,39 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
 
         #region Properties
 
+        /// <summary>
+        /// Gets the number of times the video has been viewed.
+        /// </summary>
         public long ViewCount { get; }
 
+        /// <summary>
+        /// Gets the number of users who have indicated that they liked the video.
+        /// </summary>
         public long LikeCount { get; }
 
+        /// <summary>
+        /// Gets the number of users who have indicated that they disliked the video.
+        /// </summary>
         public long DislikeCount { get; }
 
-        public long FavoriteCount { get; }
-
+        /// <summary>
+        /// Gets the number of comments for the video.
+        /// </summary>
         public long CommentCount { get; }
 
         #endregion
 
         #region Constructors
-
-        protected YouTubeVideoStatistics(JObject obj) : base(obj) {
-            ViewCount = obj.GetInt64("viewCount");
-            LikeCount = obj.GetInt64("likeCount");
-            DislikeCount = obj.GetInt64("dislikeCount");
-            FavoriteCount = obj.GetInt64("favoriteCount");
-            CommentCount = obj.GetInt64("commentCount");
+        
+        /// <summary>
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
+        /// </summary>
+        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
+        protected YouTubeVideoStatistics(JObject json) : base(json) {
+            ViewCount = json.GetInt64("viewCount");
+            LikeCount = json.GetInt64("likeCount");
+            DislikeCount = json.GetInt64("dislikeCount");
+            CommentCount = json.GetInt64("commentCount");
         }
 
         #endregion
@@ -41,12 +54,12 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         #region Static methods
 
         /// <summary>
-        /// Returns a new <see cref="YouTubeVideoStatistics"/> parsed from the specified <paramref name="obj"/>.
+        /// Returns a new <see cref="YouTubeVideoStatistics"/> parsed from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubeVideoStatistics"/>.</returns>
-        public static YouTubeVideoStatistics Parse(JObject obj) {
-            return obj == null ? null : new YouTubeVideoStatistics(obj);
+        public static YouTubeVideoStatistics Parse(JObject json) {
+            return json == null ? null : new YouTubeVideoStatistics(json);
         }
 
         #endregion

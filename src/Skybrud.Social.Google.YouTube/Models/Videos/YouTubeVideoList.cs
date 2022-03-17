@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Social.Google.Models;
+using Skybrud.Social.Google.YouTube.Options.Videos;
 
 namespace Skybrud.Social.Google.YouTube.Models.Videos {
 
@@ -14,23 +15,41 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
 
         #region Properties
 
+        /// <summary>
+        /// Gets the token that can be used as the value of the <see cref="YouTubeGetVideoListOptions.PageToken"/>
+        /// parameter to retrieve the next page in the result set.
+        /// </summary>
         public string NextPageToken { get; }
 
+        /// <summary>
+        /// Gets the token that can be used as the value of the <see cref="YouTubeGetVideoListOptions.PageToken"/>
+        /// parameter to retrieve the previous page in the result set.
+        /// </summary>
         public string PrevPageToken { get; }
 
+        /// <summary>
+        /// Gets a reference to an object that encapsulates paging information for the result set.
+        /// </summary>
         public YouTubePageInfo PageInfo { get; }
 
+        /// <summary>
+        /// gets an array of the videos returned in the response.
+        /// </summary>
         public YouTubeVideo[] Items { get; }
 
         #endregion
 
         #region Constructors
-
-        protected YouTubeVideoList(JObject obj) : base(obj) {
-            NextPageToken = obj.GetString("nextPageToken");
-            PrevPageToken = obj.GetString("prevPageToken");
-            PageInfo = obj.GetObject("pageInfo", YouTubePageInfo.Parse);
-            Items = obj.GetArray("items", YouTubeVideo.Parse);
+        
+        /// <summary>
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
+        /// </summary>
+        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
+        protected YouTubeVideoList(JObject json) : base(json) {
+            NextPageToken = json.GetString("nextPageToken");
+            PrevPageToken = json.GetString("prevPageToken");
+            PageInfo = json.GetObject("pageInfo", YouTubePageInfo.Parse);
+            Items = json.GetArray("items", YouTubeVideo.Parse);
         }
 
         #endregion
@@ -38,12 +57,12 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         #region Static methods
 
         /// <summary>
-        /// Returns a new <see cref="YouTubeVideoList"/> parsed from the specified <paramref name="obj"/>.
+        /// Returns a new <see cref="YouTubeVideoList"/> parsed from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubeVideoList"/>.</returns>
-        public static YouTubeVideoList Parse(JObject obj) {
-            return obj == null ? null : new YouTubeVideoList(obj);
+        public static YouTubeVideoList Parse(JObject json) {
+            return json == null ? null : new YouTubeVideoList(json);
         }
 
         #endregion
