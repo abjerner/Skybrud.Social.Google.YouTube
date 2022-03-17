@@ -33,7 +33,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// <summary>
         /// Gets whether the video has captions. Can be either <c>true</c> or <c>false</c>.
         /// </summary>
-        public string HasCaption { get; }
+        public bool HasCaption { get; }
         
         /// <summary>
         /// Gets whether the video represents licensed content, which means that the content has been claimed by a
@@ -53,7 +53,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
             Duration = json.GetString("duration", YouTubeVideoDuration.Parse);
             Dimension = json.GetString("dimension");
             Definition = json.GetString("definition", ParseDefinition);
-            HasCaption = json.GetString("caption");
+            HasCaption = json.GetBoolean("caption");
             IsLicensedContent = json.GetBoolean("licensedContent");
         }
 
