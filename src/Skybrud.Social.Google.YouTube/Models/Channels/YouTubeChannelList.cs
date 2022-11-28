@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Google.Models;
 
@@ -33,8 +34,8 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
         protected YouTubeChannelList(JObject json) : base(json) {
-            PageInfo = json.GetObject("pageInfo", YouTubePageInfo.Parse);
-            Items = json.GetArray("items", YouTubeChannel.Parse);
+            PageInfo = json.GetObject("pageInfo", YouTubePageInfo.Parse)!;
+            Items = json.GetArray("items", YouTubeChannel.Parse)!;
         }
 
         #endregion
@@ -46,7 +47,8 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubeChannelList"/>.</returns>
-        public static YouTubeChannelList Parse(JObject json) {
+        [return: NotNullIfNotNull("json")]
+        public static YouTubeChannelList? Parse(JObject? json) {
             return json == null ? null : new YouTubeChannelList(json);
         }
 

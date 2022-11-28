@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Essentials.Time;
@@ -70,15 +71,15 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
         protected YouTubePlaylistItemSnippet(JObject json) : base(json) {
-            PublishedAt = json.GetString("publishedAt", EssentialsTime.Parse);
-            ChannelId = json.GetString("channelId");
-            Title = json.GetString("title");
-            Description = json.GetString("description");
-            Thumbnails = json.GetObject("thumbnails", YouTubePlaylistItemThumbnails.Parse);
-            ChannelTitle = json.GetString("channelTitle");
-            PlaylistId = json.GetString("playlistId");
-            Position = json.GetInt32("position");
-            ResourceId = json.GetObject("resourceId", YouTubePlaylistItemResourceId.Parse);
+            PublishedAt = json.GetString("publishedAt", EssentialsTime.Parse)!;
+            ChannelId = json.GetString("channelId")!;
+            Title = json.GetString("title")!;
+            Description = json.GetString("description")!;
+            Thumbnails = json.GetObject("thumbnails", YouTubePlaylistItemThumbnails.Parse)!;
+            ChannelTitle = json.GetString("channelTitle")!;
+            PlaylistId = json.GetString("playlistId")!;
+            Position = json.GetInt32("position")!;
+            ResourceId = json.GetObject("resourceId", YouTubePlaylistItemResourceId.Parse)!;
         }
 
         #endregion
@@ -90,7 +91,8 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubePlaylistItemSnippet"/>.</returns>
-        public static YouTubePlaylistItemSnippet Parse(JObject json) {
+        [return: NotNullIfNotNull("json")]
+        public static YouTubePlaylistItemSnippet? Parse(JObject? json) {
             return json == null ? null : new YouTubePlaylistItemSnippet(json);
         }
 

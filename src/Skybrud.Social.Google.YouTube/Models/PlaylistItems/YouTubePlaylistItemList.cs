@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Google.Models;
 using Skybrud.Social.Google.YouTube.Options.Playlists;
@@ -16,13 +17,13 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         /// Gets the token that can be used as the value of the <see cref="YouTubeGetPlaylistListOptions.PageToken"/>
         /// parameter to retrieve the next page in the result set.
         /// </summary>
-        public string NextPageToken { get; }
+        public string? NextPageToken { get; }
 
         /// <summary>
         /// Gets the token that can be used as the value of the <see cref="YouTubeGetPlaylistListOptions.PageToken"/>
         /// parameter to retrieve the previous page in the result set.
         /// </summary>
-        public string PrevPageToken { get; }
+        public string? PrevPageToken { get; }
 
         /// <summary>
         /// Gets a reference to an object that encapsulates paging information for the result set.
@@ -45,8 +46,8 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         protected YouTubePlaylistItemList(JObject json) : base(json) {
             NextPageToken = json.GetString("nextPageToken");
             PrevPageToken = json.GetString("prevPageToken");
-            PageInfo = json.GetObject("pageInfo", YouTubePageInfo.Parse);
-            Items = json.GetArray("items", YouTubePlaylistItem.Parse);
+            PageInfo = json.GetObject("pageInfo", YouTubePageInfo.Parse)!;
+            Items = json.GetArray("items", YouTubePlaylistItem.Parse)!;
         }
 
         #endregion
@@ -58,7 +59,8 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubePlaylistItemList"/>.</returns>
-        public static YouTubePlaylistItemList Parse(JObject json) {
+        [return: NotNullIfNotNull("json")]
+        public static YouTubePlaylistItemList? Parse(JObject? json) {
             return json == null ? null : new YouTubePlaylistItemList(json);
         }
 

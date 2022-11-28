@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Google.Models;
 
@@ -35,7 +36,7 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
         protected YouTubePlaylistItemThumbnail(JObject json) : base(json) {
-            Url = json.GetString("url");
+            Url = json.GetString("url")!;
             Width = json.GetInt32("width");
             Height = json.GetInt32("height");
         }
@@ -49,7 +50,8 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubePlaylistItemThumbnail"/>.</returns>
-        public static YouTubePlaylistItemThumbnail Parse(JObject json) {
+        [return: NotNullIfNotNull("json")]
+        public static YouTubePlaylistItemThumbnail? Parse(JObject? json) {
             return json == null ? null : new YouTubePlaylistItemThumbnail(json);
         }
 

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Google.Models;
 
@@ -32,8 +33,8 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
         protected YouTubeChannelLocalized(JObject json) : base(json) {
-            Title = json.GetString("title");
-            Description = json.GetString("description");
+            Title = json.GetString("title")!;
+            Description = json.GetString("description")!;
         }
 
         #endregion
@@ -45,7 +46,8 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubeChannelLocalized"/>.</returns>
-        public static YouTubeChannelLocalized Parse(JObject json) {
+        [return: NotNullIfNotNull("json")]
+        public static YouTubeChannelLocalized? Parse(JObject? json) {
             return json == null ? null : new YouTubeChannelLocalized(json);
         }
 

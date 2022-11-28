@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Google.Models;
@@ -17,22 +18,22 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         /// <summary>
         /// Gets or sets the ID of the playlist item.
         /// </summary>
-        public string Id { get; private set; }
+        public string Id { get; }
 
         /// <summary>
         /// Gets a reference to the <c>statistics</c> object of the playlist item. 
         /// </summary>
-        public YouTubePlaylistItemSnippet Snippet { get; }
+        public YouTubePlaylistItemSnippet? Snippet { get; }
 
         /// <summary>
         /// Gets a reference to the <c>contentDetails</c> object of the playlist item. 
         /// </summary>
-        public YouTubePlaylistItemContentDetails ContentDetails { get; }
+        public YouTubePlaylistItemContentDetails? ContentDetails { get; }
 
         /// <summary>
         /// Gets a reference to the <c>status</c> object of the playlist item. 
         /// </summary>
-        public YouTubePlaylistItemStatus Status { get; }
+        public YouTubePlaylistItemStatus? Status { get; }
 
         #endregion
 
@@ -43,7 +44,7 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
         protected YouTubePlaylistItem(JObject json) : base(json) {
-            Id = json.GetString("id");
+            Id = json.GetString("id")!;
             Snippet = json.GetObject("snippet", YouTubePlaylistItemSnippet.Parse);
             ContentDetails = json.GetObject("contentDetails", YouTubePlaylistItemContentDetails.Parse);
             Status = json.GetObject("status", YouTubePlaylistItemStatus.Parse);
@@ -58,7 +59,8 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubePlaylistItem"/>.</returns>
-        public static YouTubePlaylistItem Parse(JObject json) {
+        [return: NotNullIfNotNull("json")]
+        public static YouTubePlaylistItem? Parse(JObject? json) {
             return json == null ? null : new YouTubePlaylistItem(json);
         }
 

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Google.Models;
 using Skybrud.Social.Google.YouTube.Options.Videos;
@@ -19,13 +20,13 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// Gets the token that can be used as the value of the <see cref="YouTubeGetVideoListOptions.PageToken"/>
         /// parameter to retrieve the next page in the result set.
         /// </summary>
-        public string NextPageToken { get; }
+        public string? NextPageToken { get; }
 
         /// <summary>
         /// Gets the token that can be used as the value of the <see cref="YouTubeGetVideoListOptions.PageToken"/>
         /// parameter to retrieve the previous page in the result set.
         /// </summary>
-        public string PrevPageToken { get; }
+        public string? PrevPageToken { get; }
 
         /// <summary>
         /// Gets a reference to an object that encapsulates paging information for the result set.
@@ -48,8 +49,8 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         protected YouTubeVideoList(JObject json) : base(json) {
             NextPageToken = json.GetString("nextPageToken");
             PrevPageToken = json.GetString("prevPageToken");
-            PageInfo = json.GetObject("pageInfo", YouTubePageInfo.Parse);
-            Items = json.GetArray("items", YouTubeVideo.Parse);
+            PageInfo = json.GetObject("pageInfo", YouTubePageInfo.Parse)!;
+            Items = json.GetArray("items", YouTubeVideo.Parse)!;
         }
 
         #endregion
@@ -61,7 +62,8 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubeVideoList"/>.</returns>
-        public static YouTubeVideoList Parse(JObject json) {
+        [return: NotNullIfNotNull("json")]
+        public static YouTubeVideoList? Parse(JObject? json) {
             return json == null ? null : new YouTubeVideoList(json);
         }
 

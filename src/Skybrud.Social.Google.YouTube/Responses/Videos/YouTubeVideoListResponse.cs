@@ -13,7 +13,7 @@ namespace Skybrud.Social.Google.YouTube.Responses.Videos {
         /// </summary>
         /// <param name="response">The underlying raw response the instance should be based on.</param>
         public YouTubeVideoListResponse(IHttpResponse response) : base(response) {
-            Body = ParseJsonObject(response.Body, YouTubeVideoList.Parse);
+            Body = ParseJsonObject(response.Body, YouTubeVideoList.Parse)!;
         }
 
     }

@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Essentials.Time;
@@ -72,20 +73,20 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         protected YouTubeVideoSnippet(JObject json) : base(json) {
 
             // Parse the "liveBroadcastContent" property
-            string strBroadcast = json.GetString("liveBroadcastContent");
+            string? strBroadcast = json.GetString("liveBroadcastContent");
             if (!Enum.TryParse(strBroadcast, true, out YouTubeVideoLiveBroadcastContent broadcast)) {
-                throw new Exception("Unknown value for liveBroadcastContent \"" + strBroadcast + "\" - please create an issue so it can be fixed https://github.com/abjerner/Skybrud.Social.Google/issues/new");
+                throw new Exception($"Unknown value for liveBroadcastContent \"{strBroadcast}\" - please create an issue so it can be fixed https://github.com/abjerner/Skybrud.Social.Google/issues/new");
             }
 
             // Initialize the snippet object
-            PublishedAt = json.GetString("publishedAt", EssentialsTime.Parse);
-            ChannelId = json.GetString("channelId");
-            Title = json.GetString("title");
-            Description = json.GetString("description");
-            Thumbnails = json.GetObject("thumbnails", YouTubeVideoThumbnails.Parse);
-            ChannelTitle = json.GetString("channelTitle");
+            PublishedAt = json.GetString("publishedAt", EssentialsTime.Parse)!;
+            ChannelId = json.GetString("channelId")!;
+            Title = json.GetString("title")!;
+            Description = json.GetString("description")!;
+            Thumbnails = json.GetObject("thumbnails", YouTubeVideoThumbnails.Parse)!;
+            ChannelTitle = json.GetString("channelTitle")!;
             Tags = json.GetStringArray("tags");
-            CategoryId = json.GetString("categoryId");
+            CategoryId = json.GetString("categoryId")!;
             LiveBroadcastContent = broadcast;
 
         }
@@ -99,7 +100,8 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubeVideoSnippet"/>.</returns>
-        public static YouTubeVideoSnippet Parse(JObject json) {
+        [return: NotNullIfNotNull("json")]
+        public static YouTubeVideoSnippet? Parse(JObject? json) {
             return json == null ? null : new YouTubeVideoSnippet(json);
         }
 

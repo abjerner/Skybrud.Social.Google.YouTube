@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Google.Models;
@@ -31,8 +32,8 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
         protected YouTubePlaylistItemResourceId(JObject json) : base(json) {
-            Kind = json.GetString("kind");
-            VideoId = json.GetString("videoId");
+            Kind = json.GetString("kind")!;
+            VideoId = json.GetString("videoId")!;
         }
 
         #endregion
@@ -44,7 +45,8 @@ namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubePlaylistItemResourceId"/>.</returns>
-        public static YouTubePlaylistItemResourceId Parse(JObject json) {
+        [return: NotNullIfNotNull("json")]
+        public static YouTubePlaylistItemResourceId? Parse(JObject? json) {
             return json == null ? null : new YouTubePlaylistItemResourceId(json);
         }
 

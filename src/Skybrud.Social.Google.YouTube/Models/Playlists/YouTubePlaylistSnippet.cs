@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Essentials.Time;
@@ -46,11 +47,11 @@ namespace Skybrud.Social.Google.YouTube.Models.Playlists {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
         protected YouTubePlaylistSnippet(JObject json) : base(json) {
-            ChannelId = json.GetString("channelId");
-            ChannelTitle = json.GetString("channelTitle");
-            PublishedAt = json.GetString("publishedAt", EssentialsTime.Parse);
-            Title = json.GetString("title");
-            Description = json.GetString("description");
+            ChannelId = json.GetString("channelId")!;
+            ChannelTitle = json.GetString("channelTitle")!;
+            PublishedAt = json.GetString("publishedAt", EssentialsTime.Parse)!;
+            Title = json.GetString("title")!;
+            Description = json.GetString("description")!;
         }
 
         #endregion
@@ -62,7 +63,8 @@ namespace Skybrud.Social.Google.YouTube.Models.Playlists {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubePlaylistSnippet"/>.</returns>
-        public static YouTubePlaylistSnippet Parse(JObject json) {
+        [return: NotNullIfNotNull("json")]
+        public static YouTubePlaylistSnippet? Parse(JObject? json) {
             return json == null ? null : new YouTubePlaylistSnippet(json);
         }
 

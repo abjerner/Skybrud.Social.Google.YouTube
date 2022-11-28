@@ -1,4 +1,5 @@
-﻿using Skybrud.Essentials.Http;
+﻿using System.Collections.Generic;
+using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Collections;
 using Skybrud.Essentials.Http.Options;
 
@@ -14,32 +15,32 @@ namespace Skybrud.Social.Google.YouTube.Options.Playlists {
         /// <summary>
         /// Gets or sets which properties that should be returned.
         /// </summary>
-        public YouTubePlaylistPartList Part { get; set; }
+        public YouTubePlaylistPartList Part { get; set; } = YouTubePlaylistParts.Snippet;
 
         /// <summary>
         /// Gets or sets a channel ID if only playlists for a specific channel should be returned.
         /// </summary>
-        public string ChannelId { get; set; }
+        public string? ChannelId { get; set; }
 
         /// <summary>
         /// Gets or sets a list of IDs for the playlists to be returned.
         /// </summary>
-        public string[] Ids { get; set; }
+        public List<string>? Ids { get; set; } = new();
 
         /// <summary>
         /// Gets or sets the maximum amount of playlists to be returned on each page (maximum is <c>50</c>).
         /// </summary>
-        public int MaxResults { get; set; }
+        public int? MaxResults { get; set; }
 
         /// <summary>
         /// Gets or sets whether only playlists by the authenticated user should be returned.
         /// </summary>
-        public bool Mine { get; set; }
+        public bool? Mine { get; set; }
 
         /// <summary>
         /// Gets or sets the page token.
         /// </summary>
-        public string PageToken { get; set; }
+        public string? PageToken { get; set; }
 
         #endregion
 
@@ -48,16 +49,13 @@ namespace Skybrud.Social.Google.YouTube.Options.Playlists {
         /// <summary>
         /// Initializes a new instance with default options.
         /// </summary>
-        public YouTubeGetPlaylistListOptions() {
-            Part = YouTubePlaylistParts.Snippet;
-        }
+        public YouTubeGetPlaylistListOptions() { }
 
         /// <summary>
         /// Initializes a new instance based on the specified <paramref name="channelId"/>.
         /// </summary>
         /// <param name="channelId">The ID of the parent channel.</param>
         public YouTubeGetPlaylistListOptions(string channelId) {
-            Part = YouTubePlaylistParts.Snippet;
             ChannelId = channelId;
         }
 
@@ -66,7 +64,6 @@ namespace Skybrud.Social.Google.YouTube.Options.Playlists {
         /// </summary>
         /// <param name="mine"></param>
         public YouTubeGetPlaylistListOptions(bool mine) {
-            Part = YouTubePlaylistParts.Snippet;
             Mine = mine;
         }
 
@@ -77,14 +74,17 @@ namespace Skybrud.Social.Google.YouTube.Options.Playlists {
         /// <inheritdoc />
         public IHttpRequest GetRequest() {
 
-            HttpQueryString query = new HttpQueryString();
-            if (Part != null) query.Add("part", Part.ToString());
+            // Initialize the query string
+            HttpQueryString query = new() { { "part", Part.ToString() } };
+
+            // Add optional parameters
             if (!string.IsNullOrWhiteSpace(ChannelId)) query.Add("channelId", ChannelId);
-            if (Ids != null && Ids.Length > 0) query.Add("id", string.Join(",", Ids));
+            if (Ids is { Count: > 0 }) query.Add("id", string.Join(",", Ids));
             if (MaxResults > 0) query.Add("maxResults", MaxResults);
-            if (Mine) query.Add("mine", "true");
+            if (Mine is true) query.Add("mine", "true");
             if (!string.IsNullOrWhiteSpace(PageToken)) query.Add("pageToken", PageToken);
 
+            // Initialize a new request
             return HttpRequest.Get("https://www.googleapis.com/youtube/v3/playlists", query);
 
         }

@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Google.Models;
@@ -50,7 +51,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
         protected YouTubeVideoContentDetails(JObject json) : base(json) {
-            Duration = json.GetString("duration", YouTubeVideoDuration.Parse);
+            Duration = json.GetString("duration", YouTubeVideoDuration.Parse)!;
             Dimension = json.GetString("dimension", ParseDimension);
             Definition = json.GetString("definition", ParseDefinition);
             HasCaption = json.GetBoolean("caption");
@@ -66,7 +67,8 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubeVideoContentDetails"/>.</returns>
-        public static YouTubeVideoContentDetails Parse(JObject json) {
+        [return: NotNullIfNotNull("json")]
+        public static YouTubeVideoContentDetails? Parse(JObject? json) {
             return json == null ? null : new YouTubeVideoContentDetails(json);
         }
 

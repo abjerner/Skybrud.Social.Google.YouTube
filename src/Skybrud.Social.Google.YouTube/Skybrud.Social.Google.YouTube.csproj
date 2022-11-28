@@ -4,6 +4,7 @@
     <LangVersion>11.0</LangVersion>
     <TargetFrameworks>netstandard1.3;net45;net46;net47</TargetFrameworks>
     <BuildInParallel>false</BuildInParallel>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -30,6 +31,7 @@
   <ItemGroup>
     <PackageReference Include="Skybrud.Essentials.Http" Version="1.1.1" />
     <PackageReference Include="Skybrud.Social.Google" Version="1.0.2" />
+    <PackageReference Include="Nullable" Version="1.3.1" PrivateAssets="all" />
   </ItemGroup>
 
   <!-- Include package icon for NuGet -->

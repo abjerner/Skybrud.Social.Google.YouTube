@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Google.Models;
 
@@ -23,12 +24,12 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         /// Gets a reference to the <c>snippet</c> object of the channel, which contains details such as the
         /// title, description and thumbnail images of the channel.
         /// </summary>
-        public YouTubeChannelSnippet Snippet { get; }
+        public YouTubeChannelSnippet? Snippet { get; }
 
         /// <summary>
         /// Gets a reference to the <c>statistics</c> object of the channel. 
         /// </summary>
-        public YouTubeChannelStatistics Statistics { get; }
+        public YouTubeChannelStatistics? Statistics { get; }
 
         #endregion
 
@@ -39,7 +40,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
         protected YouTubeChannel(JObject json) : base(json) {
-            Id = json.GetString("id");
+            Id = json.GetString("id")!;
             Snippet = json.GetObject("snippet", YouTubeChannelSnippet.Parse);
             Statistics = json.GetObject("statistics", YouTubeChannelStatistics.Parse);
         }
@@ -53,7 +54,8 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubeChannel"/>.</returns>
-        public static YouTubeChannel Parse(JObject json) {
+        [return: NotNullIfNotNull("json")]
+        public static YouTubeChannel? Parse(JObject? json) {
             return json == null ? null : new YouTubeChannel(json);
         }
 

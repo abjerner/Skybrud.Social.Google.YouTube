@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Google.Models;
 
@@ -17,17 +18,17 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         /// <summary>
         /// Gets a reference to the default thumbnail of the channel. The default thumbnail for a channel is <c>88px</c> wide and <c>88px</c> tall.
         /// </summary>
-        public YouTubeChannelThumbnail Default { get; }
+        public YouTubeChannelThumbnail? Default { get; }
 
         /// <summary>
         /// Gets a reference to a higher resolution version of the thumbnail image. For a channel, this image is <c>240px</c> wide and <c>240px</c> tall.
         /// </summary>
-        public YouTubeChannelThumbnail Medium { get; }
+        public YouTubeChannelThumbnail? Medium { get; }
 
         /// <summary>
         /// Gets a reference to a high resolution version of the thumbnail image. For a channel, this image is <c>800px</c> wide and <c>800px</c> tall.
         /// </summary>
-        public YouTubeChannelThumbnail High { get; }
+        public YouTubeChannelThumbnail? High { get; }
 
         #endregion
 
@@ -52,7 +53,8 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubeChannelThumbnails"/>.</returns>
-        public static YouTubeChannelThumbnails Parse(JObject json) {
+        [return: NotNullIfNotNull("json")]
+        public static YouTubeChannelThumbnails? Parse(JObject? json) {
             return json == null ? null : new YouTubeChannelThumbnails(json);
         }
 

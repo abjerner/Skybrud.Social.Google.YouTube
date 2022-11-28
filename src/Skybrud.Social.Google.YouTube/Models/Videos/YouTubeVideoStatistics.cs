@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Google.Models;
 
@@ -58,7 +59,8 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <returns>An instance of <see cref="YouTubeVideoStatistics"/>.</returns>
-        public static YouTubeVideoStatistics Parse(JObject json) {
+        [return: NotNullIfNotNull("json")]
+        public static YouTubeVideoStatistics? Parse(JObject? json) {
             return json == null ? null : new YouTubeVideoStatistics(json);
         }
 

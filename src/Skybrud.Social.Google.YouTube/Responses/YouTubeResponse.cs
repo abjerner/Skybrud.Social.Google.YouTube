@@ -25,10 +25,9 @@ namespace Skybrud.Social.Google.YouTube.Responses {
 
             JObject obj = ParseJsonObject(response.Body);
 
-            JObject error = obj.GetObject("error");
-
-            int code = error.GetInt32("code");
-            string message = error.GetString("message");
+            JObject error = obj.GetObject("error")!;
+            
+            string message = error.GetString("message")!;
 
             // TODO: Parse "errors"
 
@@ -48,7 +47,7 @@ namespace Skybrud.Social.Google.YouTube.Responses {
         /// <summary>
         /// Gets the body of the response.
         /// </summary>
-        public T Body { get; protected set; }
+        public T Body { get; protected set; } = default!;
 
         /// <summary>
         /// Initializes a new instance based on the specified <paramref name="response"/>.
