@@ -28,8 +28,8 @@
 
   <!-- Include NuGet dependencies -->
   <ItemGroup>
-    <PackageReference Include="Skybrud.Essentials.Http" Version="1.0.16" />
-    <PackageReference Include="Skybrud.Social.Google" Version="1.0.1" />
+    <PackageReference Include="Skybrud.Essentials.Http" Version="1.1.1" />
+    <PackageReference Include="Skybrud.Social.Google" Version="1.0.2" />
   </ItemGroup>
 
   <!-- Include package icon for NuGet -->

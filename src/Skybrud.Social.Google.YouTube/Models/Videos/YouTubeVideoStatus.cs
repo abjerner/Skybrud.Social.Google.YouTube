@@ -1,6 +1,6 @@
 using System;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Google.Models;
 
 namespace Skybrud.Social.Google.YouTube.Models.Videos {
@@ -73,23 +73,21 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
 
             // Parse the failure reason
             YouTubeVideoFailureReason? failureReason = null;
-            if (json.HasValue("failureReason")) {
-                string strReason = json.GetString("failureReason");
-                if (Enum.TryParse(strReason, out YouTubeVideoFailureReason reason)) {
+            if (json.GetString("failureReason") is {} strFailureReason) {
+                if (Enum.TryParse(strFailureReason, out YouTubeVideoFailureReason reason)) {
                     failureReason = reason;
                 } else {
-                    throw new Exception("Unknown failure reason \"" + strReason + "\" - please create an issue so it can be fixed https://github.com/abjerner/Skybrud.Social.Google/issues/new");
+                    throw new Exception($"Unknown failure reason \"{strFailureReason}\" - please create an issue so it can be fixed https://github.com/abjerner/Skybrud.Social.Google/issues/new");
                 }
             }
 
             // Parse the rejection reason
             YouTubeVideoRejectionReason? rejectionReason = null;
-            if (json.HasValue("rejectionReason")) {
-                string strReason = json.GetString("rejectionReason");
-                if (Enum.TryParse(strReason, out YouTubeVideoRejectionReason reason)) {
+            if (json.GetString("rejectionReason") is {} strRejectionReason) {
+                if (Enum.TryParse(strRejectionReason, out YouTubeVideoRejectionReason reason)) {
                     rejectionReason = reason;
                 } else {
-                    throw new Exception("Unknown rejection reason \"" + strReason + "\" - please create an issue so it can be fixed https://github.com/abjerner/Skybrud.Social.Google/issues/new");
+                    throw new Exception("Unknown rejection reason \"" + strRejectionReason + "\" - please create an issue so it can be fixed https://github.com/abjerner/Skybrud.Social.Google/issues/new");
                 }
             }
 
