@@ -68,7 +68,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
             // Parse the upload status
             string? strUploadStatus = json.GetString("uploadStatus");
             if (!Enum.TryParse(strUploadStatus, true, out YouTubeVideoUploadStatus uploadStatus)) {
-                throw new Exception($"Unknown upload status \"{strUploadStatus}\" - please create an issue so it can be fixed https://github.com/abjerner/Skybrud.Social.Google/issues/new");
+                throw new Exception($"Unknown upload status \"{strUploadStatus}\" - please create an issue so it can be fixed {YouTubeConstants.NewIssueUrl}");
             }
 
             // Parse the failure reason
@@ -77,7 +77,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
                 if (Enum.TryParse(strFailureReason, out YouTubeVideoFailureReason reason)) {
                     failureReason = reason;
                 } else {
-                    throw new Exception($"Unknown failure reason \"{strFailureReason}\" - please create an issue so it can be fixed https://github.com/abjerner/Skybrud.Social.Google/issues/new");
+                    throw new Exception($"Unknown failure reason \"{strFailureReason}\" - please create an issue so it can be fixed {YouTubeConstants.NewIssueUrl}");
                 }
             }
 
@@ -87,20 +87,20 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
                 if (Enum.TryParse(strRejectionReason, out YouTubeVideoRejectionReason reason)) {
                     rejectionReason = reason;
                 } else {
-                    throw new Exception($"Unknown rejection reason \"{strRejectionReason}\" - please create an issue so it can be fixed https://github.com/abjerner/Skybrud.Social.Google/issues/new");
+                    throw new Exception($"Unknown rejection reason \"{strRejectionReason}\" - please create an issue so it can be fixed {YouTubeConstants.NewIssueUrl}");
                 }
             }
 
             // Parse the privacy status
             string? strPrivacyStatus = json.GetString("privacyStatus");
             if (!Enum.TryParse(strPrivacyStatus, true, out YouTubePrivacyStatus privacyStatus)) {
-                throw new Exception($"Unknown privacy status \"{strPrivacyStatus}\" - please create an issue so it can be fixed https://github.com/abjerner/Skybrud.Social.Google/issues/new");
+                throw new Exception($"Unknown privacy status \"{strPrivacyStatus}\" - please create an issue so it can be fixed {YouTubeConstants.NewIssueUrl}");
             }
 
             // Parse the privacy status
             string? strLicense = json.GetString("license");
             if (!Enum.TryParse(strLicense, true, out YouTubeVideoLicense videoLicense)) {
-                throw new Exception($"Unknown license \"{strLicense}\" - please create an issue so it can be fixed https://github.com/abjerner/Skybrud.Social.Google/issues/new");
+                throw new Exception($"Unknown license \"{strLicense}\" - please create an issue so it can be fixed {YouTubeConstants.NewIssueUrl}");
             }
 
             // Update the properties

@@ -76,7 +76,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
             // Parse the "liveBroadcastContent" property
             string? strBroadcast = json.GetString("liveBroadcastContent");
             if (!Enum.TryParse(strBroadcast, true, out YouTubeVideoLiveBroadcastContent broadcast)) {
-                throw new Exception($"Unknown value for liveBroadcastContent \"{strBroadcast}\" - please create an issue so it can be fixed https://github.com/abjerner/Skybrud.Social.Google/issues/new");
+                throw new Exception($"Unknown value for liveBroadcastContent \"{strBroadcast}\" - please create an issue so it can be fixed {YouTubeConstants.NewIssueUrl}");
             }
 
             // Initialize the snippet object

@@ -31,7 +31,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Playlists {
             // Parse the privacy status
             string? strStatus = json.GetString("privacyStatus");
             if (!Enum.TryParse(strStatus, true, out YouTubePrivacyStatus status)) {
-                throw new Exception($"Unknown privacy status \"{strStatus}\" - please create an issue so it can be fixed https://github.com/abjerner/Skybrud.Social.Google.YouTube/issues/new");
+                throw new Exception($"Unknown privacy status \"{strStatus}\" - please create an issue so it can be fixed {YouTubeConstants.NewIssueUrl}");
             }
 
             PrivacyStatus = status;
