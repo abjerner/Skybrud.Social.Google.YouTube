@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Skybrud.Social.Google.Attributes;
 using Skybrud.Social.Google.Scopes;
 
@@ -18,7 +19,7 @@ namespace Skybrud.Social.Google.YouTube.Scopes {
         /// <summary>
         /// Manage your YouTube account.
         /// </summary>
-        public static readonly YouTubeScope Manage = new YouTubeScope(
+        public static readonly YouTubeScope Manage = new(
             "https://www.googleapis.com/auth/youtube",
             "Manage",
             "Manage your YouTube account."
@@ -27,7 +28,7 @@ namespace Skybrud.Social.Google.YouTube.Scopes {
         /// <summary>
         /// View your YouTube account.
         /// </summary>
-        public static readonly YouTubeScope Readonly = new YouTubeScope(
+        public static readonly YouTubeScope Readonly = new(
             "https://www.googleapis.com/auth/youtube.readonly",
             "Readonly",
             "View your YouTube account."
@@ -36,7 +37,7 @@ namespace Skybrud.Social.Google.YouTube.Scopes {
         /// <summary>
         /// Upload YouTube videos and manage your YouTube videos.
         /// </summary>
-        public static readonly YouTubeScope Upload = new YouTubeScope(
+        public static readonly YouTubeScope Upload = new(
             "https://www.googleapis.com/auth/youtube.upload",
             "Upload",
             "Upload YouTube videos and manage your YouTube videos."
@@ -45,7 +46,7 @@ namespace Skybrud.Social.Google.YouTube.Scopes {
         /// <summary>
         /// Retrieve the auditDetails part in a channel resource.
         /// </summary>
-        public static readonly YouTubeScope PartnerChannelAudit = new YouTubeScope(
+        public static readonly YouTubeScope PartnerChannelAudit = new(
             "https://www.googleapis.com/auth/youtubepartner-channel-audit",
             "Audit partner channel",
             "Retrieve the auditDetails part in a channel resource."
@@ -54,7 +55,9 @@ namespace Skybrud.Social.Google.YouTube.Scopes {
         /// <summary>
         /// Gets an array of all YouTube scopes.
         /// </summary>
-        public static readonly GoogleScope[] All = { Manage, Readonly, Upload, PartnerChannelAudit };
+        public static readonly IReadOnlyList<GoogleScope> All = new GoogleScope[] {
+            Manage, Readonly, Upload, PartnerChannelAudit
+        };
 
         #endregion
 
