@@ -13,7 +13,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Channels {
 
         #region Private fields
 
-        private readonly List<YouTubeChannelPart> _list = new List<YouTubeChannelPart>();
+        private readonly List<YouTubeChannelPart> _list = new();
 
         #endregion
 

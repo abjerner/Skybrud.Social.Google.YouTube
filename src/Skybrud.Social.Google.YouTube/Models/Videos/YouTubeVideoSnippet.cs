@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
@@ -50,7 +51,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// <summary>
         /// Gets an array with all tags of the video.
         /// </summary>
-        public string[] Tags { get; }
+        public IReadOnlyList<string> Tags { get; }
 
         /// <summary>
         /// Gets the ID of the category.

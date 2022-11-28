@@ -11,7 +11,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Videos {
 
         #region Private fields
 
-        private readonly List<YouTubeVideoPart> _list = new List<YouTubeVideoPart>();
+        private readonly List<YouTubeVideoPart> _list = new();
 
         #endregion
 

@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Google.Models;
@@ -36,7 +37,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
         /// <summary>
         /// Gets an array of the videos returned in the response.
         /// </summary>
-        public YouTubeVideo[] Items { get; }
+        public IReadOnlyList<YouTubeVideo> Items { get; }
 
         #endregion
 
@@ -50,7 +51,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Videos {
             NextPageToken = json.GetString("nextPageToken");
             PrevPageToken = json.GetString("prevPageToken");
             PageInfo = json.GetObject("pageInfo", YouTubePageInfo.Parse)!;
-            Items = json.GetArray("items", YouTubeVideo.Parse)!;
+            Items = json.GetArrayItems("items", YouTubeVideo.Parse)!;
         }
 
         #endregion

@@ -10,7 +10,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Playlists {
 
         #region Private fields
 
-        private readonly List<YouTubePlaylistPart> _list = new List<YouTubePlaylistPart>();
+        private readonly List<YouTubePlaylistPart> _list = new();
 
         #endregion
 

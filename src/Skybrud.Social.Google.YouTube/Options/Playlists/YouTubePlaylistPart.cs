@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Skybrud.Social.Google.YouTube.Exceptions;
 using Skybrud.Social.Google.YouTube.Options.Common;
@@ -27,7 +28,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Playlists {
         /// <param name="str">The string with the name of the part.</param>
         /// <returns>An instance of <see cref="YouTubePlaylistPart"/> representing the part.</returns>
         public static YouTubePlaylistPart Parse(string str) {
-            if (TryParse(str, out YouTubePlaylistPart part)) return part;
+            if (TryParse(str, out YouTubePlaylistPart? part)) return part;
             throw new YouTubeUnknownPartException(str);
         }
 
@@ -37,7 +38,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Playlists {
         /// <param name="str">The string with the name of the part.</param>
         /// <param name="part">The parsed part.</param>
         /// <returns><c>true</c> if <paramref name="str"/> matches a known part, otherwise <c>false</c>.</returns>
-        public static bool TryParse(string str, out YouTubePlaylistPart part) {
+        public static bool TryParse(string str, [NotNullWhen(true)] out YouTubePlaylistPart? part) {
             part = YouTubePlaylistParts.Values.FirstOrDefault(temp => temp.Name == str);
             return part != null;
         }

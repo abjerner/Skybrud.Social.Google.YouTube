@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Google.Models;
@@ -23,7 +24,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         /// <summary>
         /// Gets an array of the items in the list.
         /// </summary>
-        public YouTubeChannel[] Items { get; }
+        public IReadOnlyList<YouTubeChannel> Items { get; }
 
         #endregion
 
@@ -35,7 +36,7 @@ namespace Skybrud.Social.Google.YouTube.Models.Channels {
         /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
         protected YouTubeChannelList(JObject json) : base(json) {
             PageInfo = json.GetObject("pageInfo", YouTubePageInfo.Parse)!;
-            Items = json.GetArray("items", YouTubeChannel.Parse)!;
+            Items = json.GetArrayItems("items", YouTubeChannel.Parse)!;
         }
 
         #endregion
