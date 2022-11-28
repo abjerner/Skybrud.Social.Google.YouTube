@@ -16,10 +16,10 @@ namespace Skybrud.Social.Google.YouTube.Options.Channels {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new part with the specified <paramref name="name"/>.
+        /// Initializes a new part with the specified <paramref name="alias"/>.
         /// </summary>
-        /// <param name="name">The name of the scope.</param>
-        public YouTubeChannelPart(string name) : base(name) { }
+        /// <param name="alias">The alias of the scope.</param>
+        public YouTubeChannelPart(string alias) : base(alias) { }
 
         #endregion
 
@@ -42,7 +42,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Channels {
         /// <param name="part">The parsed part.</param>
         /// <returns><c>true</c> if <paramref name="str"/> matches a known part, otherwise <c>false</c>.</returns>
         public static bool TryParse(string str, [NotNullWhen(true)] out YouTubeChannelPart? part) {
-            part = YouTubeChannelParts.Values.FirstOrDefault(temp => temp.Name == str);
+            part = YouTubeChannelParts.Values.FirstOrDefault(temp => temp.Alias == str);
             return part != null;
         }
 

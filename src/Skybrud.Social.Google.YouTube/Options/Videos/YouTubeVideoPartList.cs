@@ -80,7 +80,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Videos {
         /// </summary>
         /// <returns>An array of <see cref="string"/> representing the parts of the collection.</returns>
         public string[] ToStringArray() {
-            return (from part in _list select part.Name).ToArray();
+            return (from part in _list select part.Alias).ToArray();
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Skybrud.Social.Google.YouTube.Options.Videos {
         /// </summary>
         /// <returns>An array of <see cref="string"/> representing the parts of the collection.</returns>
         public override string ToString() {
-            return string.Join(",", from part in _list select part.Name);
+            return string.Join(",", from part in _list select part.Alias);
         }
 
         #endregion

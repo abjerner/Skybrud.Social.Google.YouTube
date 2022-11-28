@@ -8,20 +8,20 @@ namespace Skybrud.Social.Google.YouTube.Options.Common {
         #region Properties
 
         /// <summary>
-        /// Gets the name of the part.
+        /// Gets the alias of the part.
         /// </summary>
-        public string Name { get; }
+        public string Alias { get; }
 
         #endregion
 
         #region Constructors
 
         /// <summary>
-        /// Initializes a new part with the specified <paramref name="name"/>.
+        /// Initializes a new part with the specified <paramref name="alias"/>.
         /// </summary>
-        /// <param name="name">The name of the scope.</param>
-        protected YouTubePart(string name) {
-            Name = name;
+        /// <param name="alias">The alias  of the scope.</param>
+        protected YouTubePart(string alias) {
+            Alias = alias;
         }
 
         #endregion

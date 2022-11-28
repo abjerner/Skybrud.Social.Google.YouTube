@@ -13,10 +13,10 @@ namespace Skybrud.Social.Google.YouTube.Options.PlaylistItems {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new part with the specified <paramref name="name"/>.
+        /// Initializes a new part with the specified <paramref name="alias"/>.
         /// </summary>
-        /// <param name="name">The name of the scope.</param>
-        public YouTubePlaylistItemPart(string name) : base(name) { }
+        /// <param name="alias">The alias of the scope.</param>
+        public YouTubePlaylistItemPart(string alias) : base(alias) { }
 
         #endregion
 
@@ -39,7 +39,7 @@ namespace Skybrud.Social.Google.YouTube.Options.PlaylistItems {
         /// <param name="part">The parsed part.</param>
         /// <returns><c>true</c> if <paramref name="str"/> matches a known part, otherwise <c>false</c>.</returns>
         public static bool TryParse(string str, [NotNullWhen(true)] out YouTubePlaylistItemPart? part) {
-            part = YouTubePlaylistItemParts.Values.FirstOrDefault(temp => temp.Name == str);
+            part = YouTubePlaylistItemParts.Values.FirstOrDefault(temp => temp.Alias == str);
             return part != null;
         }
 
