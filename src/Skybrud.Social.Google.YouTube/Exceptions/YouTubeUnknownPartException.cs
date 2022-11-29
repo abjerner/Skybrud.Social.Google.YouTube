@@ -6,7 +6,7 @@ namespace Skybrud.Social.Google.YouTube.Exceptions {
     /// <summary>
     /// Exception class throw when a given string can't be parsed into an instance of <see cref="YouTubePart"/>.
     /// </summary>
-    public class YouTubeUnknownPartException : Exception {
+    public class YouTubeUnknownPartException : YouTubeException {
 
         #region Properties
 

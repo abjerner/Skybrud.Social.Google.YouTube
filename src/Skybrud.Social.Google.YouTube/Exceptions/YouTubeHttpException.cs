@@ -9,7 +9,7 @@ namespace Skybrud.Social.Google.YouTube.Exceptions {
     /// <summary>
     /// Class representing an exception/error returned by the YouTube API.
     /// </summary>
-    public class YouTubeHttpException : Exception, IHttpException {
+    public class YouTubeHttpException : YouTubeException, IHttpException {
 
         #region Properties
 
