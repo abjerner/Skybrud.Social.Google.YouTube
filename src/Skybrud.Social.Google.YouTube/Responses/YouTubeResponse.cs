@@ -3,6 +3,9 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Google.YouTube.Exceptions;
+using Skybrud.Social.Google.YouTube.Models.Errors;
+
+// ReSharper disable SwitchStatementHandlesSomeKnownEnumValuesWithDefault
 
 namespace Skybrud.Social.Google.YouTube.Responses {
 
@@ -19,19 +22,18 @@ namespace Skybrud.Social.Google.YouTube.Responses {
         /// <param name="response">The underlying raw response the instance should be based on.</param>
         protected YouTubeResponse(IHttpResponse response) : base(response) {
 
-            // Skip error checking if the server responds with a successful status code
-            if (response.StatusCode == HttpStatusCode.OK) return;
-            if (response.StatusCode == HttpStatusCode.Created) return;
+            switch (response.StatusCode) {
 
-            JObject obj = ParseJsonObject(response.Body);
+                // Skip error checking if the server responds with a successful status code
+                case HttpStatusCode.OK:
+                case HttpStatusCode.Created:
+                    return;
 
-            JObject error = obj.GetObject("error")!;
-            
-            string message = error.GetString("message")!;
+                default:
+                    YouTubeErrorResult result = ParseJsonObject(response.Body, YouTubeErrorResult.Parse)!;
+                    throw new YouTubeHttpException(response, result);
 
-            // TODO: Parse "errors"
-
-            throw new YouTubeHttpException(response, message);
+            }
 
         }
 

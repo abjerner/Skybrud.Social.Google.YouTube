@@ -2,6 +2,7 @@
 using System.Net;
 using Skybrud.Essentials.Http;
 using Skybrud.Essentials.Http.Exceptions;
+using Skybrud.Social.Google.YouTube.Models.Errors;
 
 namespace Skybrud.Social.Google.YouTube.Exceptions {
 
@@ -13,21 +14,27 @@ namespace Skybrud.Social.Google.YouTube.Exceptions {
         #region Properties
 
         /// <summary>
+        /// Gets the status code of the response.
+        /// </summary>
+        public HttpStatusCode StatusCode => Response.StatusCode;
+
+        /// <summary>
         /// Gets a reference to the underlying <see cref="IHttpResponse"/>.
         /// </summary>
         public IHttpResponse Response { get; }
 
         /// <summary>
-        /// Gets the status code of the response.
+        /// Gets the result of the response.
         /// </summary>
-        public HttpStatusCode StatusCode => Response.StatusCode;
+        public YouTubeErrorResult Result { get; }
 
         #endregion
 
         #region Constructors
 
-        internal YouTubeHttpException(IHttpResponse response, string message) : base(message) {
+        internal YouTubeHttpException(IHttpResponse response, YouTubeErrorResult result) : base(result.Error.Message) {
             Response = response;
+            Result = result;
         }
 
         #endregion
