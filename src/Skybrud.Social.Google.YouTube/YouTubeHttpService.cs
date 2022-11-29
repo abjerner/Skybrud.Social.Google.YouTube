@@ -4,7 +4,7 @@ using Skybrud.Social.Google.YouTube.Http;
 namespace Skybrud.Social.Google.YouTube {
 
     /// <summary>
-    /// Strongly typed implementation of the YouTube API.s
+    /// Strongly typed implementation of the YouTube APIs.
     /// </summary>
     public class YouTubeHttpService : GoogleHttpServiceBase {
 
