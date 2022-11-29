@@ -10,7 +10,6 @@ namespace Skybrud.Social.Google.YouTube.Scopes {
     /// <see>
     ///     <cref>https://developers.google.com/youtube/v3/guides/auth/server-side-web-apps#Obtaining_Access_Tokens</cref>
     /// </see>
-
     [GoogleScopes("YouTube")]
     public static class YouTubeScopes {
 

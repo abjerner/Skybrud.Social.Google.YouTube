@@ -1,7 +1,5 @@
 ﻿using System.Net;
-using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Http;
-using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Google.YouTube.Exceptions;
 using Skybrud.Social.Google.YouTube.Models.Errors;
 
