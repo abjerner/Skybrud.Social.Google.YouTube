@@ -1,5 +1,5 @@
 ---
-icon: fa-brand fa-youtube
+icon: fa-brands fa-youtube
 order: 10
 outdated: true
 ---
