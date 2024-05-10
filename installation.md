@@ -8,7 +8,7 @@ order: -10
 
 ## Target Frameworks
 
-The **Skybrud.Social.GitHub.YouTube** package is build against the following frameworks:
+The **Skybrud.Social.Google.YouTube** package is build against the following frameworks:
 
 - .NET Standard 1.3
 - .NET Standard 2.0
