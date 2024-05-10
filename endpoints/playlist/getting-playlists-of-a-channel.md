@@ -1,3 +1,7 @@
+# Gettting playlists of a channel
+
+The `GetPlaylists` method has a number of different overloads that lets you request a list of playlists. In its simplest form, you can specify a single string parameter with the ID of a channel to get a list of the playlists of a specific channel:
+
 ```cshtml
 @using Skybrud.Social.Google.YouTube
 @using Skybrud.Social.Google.YouTube.Models.Playlists
