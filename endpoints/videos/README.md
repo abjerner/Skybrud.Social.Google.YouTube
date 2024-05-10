@@ -1,5 +1,5 @@
 ---
-icon: fa-youtube-play
+icon: fa-brand fa-youtube
 order: 10
 outdated: true
 ---
