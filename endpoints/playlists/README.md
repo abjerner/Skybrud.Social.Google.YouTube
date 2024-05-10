@@ -1,6 +1,6 @@
 ---
-order: 5
 icon: fa-th-list
+order: 5
 ---
 
 # Playlists
