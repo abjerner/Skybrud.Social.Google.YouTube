@@ -1,20 +1,18 @@
 ﻿#pragma warning disable 1591
 
-namespace Skybrud.Social.Google.YouTube.Models.Videos {
+namespace Skybrud.Social.Google.YouTube.Models.Videos;
 
-    /// <see>
-    ///     <cref>https://developers.google.com/youtube/v3/docs/videos#status.rejectionReason</cref>
-    /// </see>
-    public enum YouTubeVideoRejectionReason {
-        Claim,
-        Copyright,
-        Duplicate,
-        Inappropriate,
-        Length,
-        TermsOfUse,
-        Trademark,
-        UploaderAccountClosed,
-        UploaderAccountSuspended
-    }
-
+/// <see>
+///     <cref>https://developers.google.com/youtube/v3/docs/videos#status.rejectionReason</cref>
+/// </see>
+public enum YouTubeVideoRejectionReason {
+    Claim,
+    Copyright,
+    Duplicate,
+    Inappropriate,
+    Length,
+    TermsOfUse,
+    Trademark,
+    UploaderAccountClosed,
+    UploaderAccountSuspended
 }

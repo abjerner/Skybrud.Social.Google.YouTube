@@ -4,57 +4,55 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Social.Google.Models;
 
-namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems {
+namespace Skybrud.Social.Google.YouTube.Models.PlaylistItems;
 
-    /// <see>
-    ///     <cref>https://developers.google.com/youtube/v3/docs/playlistItems#status</cref>
-    /// </see>    
-    public class YouTubePlaylistItemStatus : GoogleObject {
+/// <see>
+///     <cref>https://developers.google.com/youtube/v3/docs/playlistItems#status</cref>
+/// </see>
+public class YouTubePlaylistItemStatus : GoogleObject {
 
-        #region Properties
+    #region Properties
 
-        /// <summary>
-        /// Gets the playlist item's privacy status. The channel that uploaded the video that the playlist item
-        /// represents can set this value using either the <c>videos.insert</c> or <c>videos.update</c> method.
-        /// </summary>
-        public YouTubePrivacyStatus PrivacyStatus { get; }
+    /// <summary>
+    /// Gets the playlist item's privacy status. The channel that uploaded the video that the playlist item
+    /// represents can set this value using either the <c>videos.insert</c> or <c>videos.update</c> method.
+    /// </summary>
+    public YouTubePrivacyStatus PrivacyStatus { get; }
 
-        #endregion
+    #endregion
 
-        #region Constructor
+    #region Constructor
 
-        /// <summary>
-        /// Initializes a new instance from the specified <paramref name="json"/> object.
-        /// </summary>
-        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
-        protected YouTubePlaylistItemStatus(JObject json) : base(json) {
+    /// <summary>
+    /// Initializes a new instance from the specified <paramref name="json"/> object.
+    /// </summary>
+    /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
+    protected YouTubePlaylistItemStatus(JObject json) : base(json) {
 
-            // Parse the privacy status
-            string? strStatus = json.GetString("privacyStatus");
-            if (Enum.TryParse(strStatus, true, out YouTubePrivacyStatus status) == false) {
-                throw new Exception($"Unknown privacy status \"{strStatus}\" - please create an issue so it can be fixed {YouTubeConstants.NewIssueUrl}");
-            }
-
-            PrivacyStatus = status;
-
+        // Parse the privacy status
+        string? strStatus = json.GetString("privacyStatus");
+        if (Enum.TryParse(strStatus, true, out YouTubePrivacyStatus status) == false) {
+            throw new Exception($"Unknown privacy status \"{strStatus}\" - please create an issue so it can be fixed {YouTubeConstants.NewIssueUrl}");
         }
 
-        #endregion
-
-        #region Static methods
-
-        /// <summary>
-        /// Returns a new <see cref="YouTubePlaylistItemStatus"/> parsed from the specified <paramref name="json"/> object.
-        /// </summary>
-        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
-        /// <returns>An instance of <see cref="YouTubePlaylistItemStatus"/>.</returns>
-        [return: NotNullIfNotNull("json")]
-        public static YouTubePlaylistItemStatus? Parse(JObject? json) {
-            return json == null ? null : new YouTubePlaylistItemStatus(json);
-        }
-
-        #endregion
+        PrivacyStatus = status;
 
     }
+
+    #endregion
+
+    #region Static methods
+
+    /// <summary>
+    /// Returns a new <see cref="YouTubePlaylistItemStatus"/> parsed from the specified <paramref name="json"/> object.
+    /// </summary>
+    /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
+    /// <returns>An instance of <see cref="YouTubePlaylistItemStatus"/>.</returns>
+    [return: NotNullIfNotNull("json")]
+    public static YouTubePlaylistItemStatus? Parse(JObject? json) {
+        return json == null ? null : new YouTubePlaylistItemStatus(json);
+    }
+
+    #endregion
 
 }

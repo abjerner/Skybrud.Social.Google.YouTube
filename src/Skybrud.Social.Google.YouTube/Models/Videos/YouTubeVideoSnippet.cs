@@ -6,108 +6,106 @@ using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Essentials.Time;
 using Skybrud.Social.Google.Models;
 
-namespace Skybrud.Social.Google.YouTube.Models.Videos {
+namespace Skybrud.Social.Google.YouTube.Models.Videos;
+
+/// <summary>
+/// Class representing the <c>snippet</c> part of a YouTube video.
+/// </summary>
+/// <see>
+///     <cref>https://developers.google.com/youtube/v3/docs/videos#snippet</cref>
+/// </see>
+public class YouTubeVideoSnippet : GoogleObject {
+
+    #region Properties
 
     /// <summary>
-    /// Class representing the <c>snippet</c> part of a YouTube video.
+    /// Gets or sets the publish date of the video.
     /// </summary>
-    /// <see>
-    ///     <cref>https://developers.google.com/youtube/v3/docs/videos#snippet</cref>
-    /// </see>
-    public class YouTubeVideoSnippet : GoogleObject {
+    public EssentialsTime PublishedAt { get; }
 
-        #region Properties
+    /// <summary>
+    /// Gets or sets the ID of the parent channel.
+    /// </summary>
+    public string ChannelId { get; }
 
-        /// <summary>
-        /// Gets or sets the publish date of the video.
-        /// </summary>
-        public EssentialsTime PublishedAt { get; }
+    /// <summary>
+    /// Gets or sets the title of the YouTube video.
+    /// </summary>
+    public string Title { get; }
 
-        /// <summary>
-        /// Gets or sets the ID of the parent channel.
-        /// </summary>
-        public string ChannelId { get; }
+    /// <summary>
+    /// Gets or sets the description of the video.
+    /// </summary>
+    public string Description { get; }
 
-        /// <summary>
-        /// Gets or sets the title of the YouTube video.
-        /// </summary>
-        public string Title { get; }
+    /// <summary>
+    /// Gets or set information about the thumbnails available for the video.
+    /// </summary>
+    public YouTubeVideoThumbnails Thumbnails { get; }
 
-        /// <summary>
-        /// Gets or sets the description of the video.
-        /// </summary>
-        public string Description { get; }
+    /// <summary>
+    /// Gets or sets the title of the parent channel.
+    /// </summary>
+    public string ChannelTitle { get; }
 
-        /// <summary>
-        /// Gets or set information about the thumbnails available for the video.
-        /// </summary>
-        public YouTubeVideoThumbnails Thumbnails { get; }
+    /// <summary>
+    /// Gets an array with all tags of the video.
+    /// </summary>
+    public IReadOnlyList<string> Tags { get; }
 
-        /// <summary>
-        /// Gets or sets the title of the parent channel.
-        /// </summary>
-        public string ChannelTitle { get; }
+    /// <summary>
+    /// Gets the ID of the category.
+    /// </summary>
+    public string CategoryId { get; }
 
-        /// <summary>
-        /// Gets an array with all tags of the video.
-        /// </summary>
-        public IReadOnlyList<string> Tags { get; }
+    /// <summary>
+    /// Gets the <c>liveBroadcastContent</c> property.
+    /// </summary>
+    public YouTubeVideoLiveBroadcastContent LiveBroadcastContent { get; }
 
-        /// <summary>
-        /// Gets the ID of the category.
-        /// </summary>
-        public string CategoryId { get; }
+    #endregion
 
-        /// <summary>
-        /// Gets othe <c>liveBroadcastContent</c> property.
-        /// </summary>
-        public YouTubeVideoLiveBroadcastContent LiveBroadcastContent { get; }
+    #region Constructors
 
-        #endregion
+    /// <summary>
+    /// Initializes a new instance from the specified <paramref name="json"/> object.
+    /// </summary>
+    /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
+    protected YouTubeVideoSnippet(JObject json) : base(json) {
 
-        #region Constructors
-
-        /// <summary>
-        /// Initializes a new instance from the specified <paramref name="json"/> object.
-        /// </summary>
-        /// <param name="json">The instance of <see cref="JObject"/> representing the object.</param>
-        protected YouTubeVideoSnippet(JObject json) : base(json) {
-
-            // Parse the "liveBroadcastContent" property
-            string? strBroadcast = json.GetString("liveBroadcastContent");
-            if (!Enum.TryParse(strBroadcast, true, out YouTubeVideoLiveBroadcastContent broadcast)) {
-                throw new Exception($"Unknown value for liveBroadcastContent \"{strBroadcast}\" - please create an issue so it can be fixed {YouTubeConstants.NewIssueUrl}");
-            }
-
-            // Initialize the snippet object
-            PublishedAt = json.GetString("publishedAt", EssentialsTime.Parse)!;
-            ChannelId = json.GetString("channelId")!;
-            Title = json.GetString("title")!;
-            Description = json.GetString("description")!;
-            Thumbnails = json.GetObject("thumbnails", YouTubeVideoThumbnails.Parse)!;
-            ChannelTitle = json.GetString("channelTitle")!;
-            Tags = json.GetStringArray("tags");
-            CategoryId = json.GetString("categoryId")!;
-            LiveBroadcastContent = broadcast;
-
+        // Parse the "liveBroadcastContent" property
+        string? strBroadcast = json.GetString("liveBroadcastContent");
+        if (!Enum.TryParse(strBroadcast, true, out YouTubeVideoLiveBroadcastContent broadcast)) {
+            throw new Exception($"Unknown value for liveBroadcastContent \"{strBroadcast}\" - please create an issue so it can be fixed {YouTubeConstants.NewIssueUrl}");
         }
 
-        #endregion
-
-        #region Static methods
-
-        /// <summary>
-        /// Returns a new <see cref="YouTubeVideoSnippet"/> parsed from the specified <paramref name="json"/> object.
-        /// </summary>
-        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
-        /// <returns>An instance of <see cref="YouTubeVideoSnippet"/>.</returns>
-        [return: NotNullIfNotNull("json")]
-        public static YouTubeVideoSnippet? Parse(JObject? json) {
-            return json == null ? null : new YouTubeVideoSnippet(json);
-        }
-
-        #endregion
+        // Initialize the snippet object
+        PublishedAt = json.GetString("publishedAt", EssentialsTime.Parse)!;
+        ChannelId = json.GetString("channelId")!;
+        Title = json.GetString("title")!;
+        Description = json.GetString("description")!;
+        Thumbnails = json.GetObject("thumbnails", YouTubeVideoThumbnails.Parse)!;
+        ChannelTitle = json.GetString("channelTitle")!;
+        Tags = json.GetStringArray("tags");
+        CategoryId = json.GetString("categoryId")!;
+        LiveBroadcastContent = broadcast;
 
     }
+
+    #endregion
+
+    #region Static methods
+
+    /// <summary>
+    /// Returns a new <see cref="YouTubeVideoSnippet"/> parsed from the specified <paramref name="json"/> object.
+    /// </summary>
+    /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
+    /// <returns>An instance of <see cref="YouTubeVideoSnippet"/>.</returns>
+    [return: NotNullIfNotNull("json")]
+    public static YouTubeVideoSnippet? Parse(JObject? json) {
+        return json == null ? null : new YouTubeVideoSnippet(json);
+    }
+
+    #endregion
 
 }

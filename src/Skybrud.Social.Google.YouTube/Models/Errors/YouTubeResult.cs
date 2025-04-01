@@ -4,33 +4,31 @@ using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 #pragma warning disable CS1591
 
-namespace Skybrud.Social.Google.YouTube.Models.Errors {
+namespace Skybrud.Social.Google.YouTube.Models.Errors;
 
-    public class YouTubeErrorResult {
+public class YouTubeErrorResult {
 
-        #region Properties
+    #region Properties
 
-        public YouTubeError Error { get; }
+    public YouTubeError Error { get; }
 
-        #endregion
+    #endregion
 
-        #region Constructors
+    #region Constructors
 
-        protected YouTubeErrorResult(JObject json) {
-            Error = json.GetObject("error", YouTubeError.Parse)!;
-        }
-
-        #endregion
-
-        #region Static methods
-
-        [return: NotNullIfNotNull("json")]
-        public static YouTubeErrorResult? Parse(JObject? json) {
-            return json == null ? null : new YouTubeErrorResult(json);
-        }
-
-        #endregion
-
+    protected YouTubeErrorResult(JObject json) {
+        Error = json.GetObject("error", YouTubeError.Parse)!;
     }
+
+    #endregion
+
+    #region Static methods
+
+    [return: NotNullIfNotNull("json")]
+    public static YouTubeErrorResult? Parse(JObject? json) {
+        return json == null ? null : new YouTubeErrorResult(json);
+    }
+
+    #endregion
 
 }

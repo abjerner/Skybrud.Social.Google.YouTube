@@ -5,56 +5,54 @@ using Skybrud.Social.Google.YouTube.Models.Errors;
 
 // ReSharper disable SwitchStatementHandlesSomeKnownEnumValuesWithDefault
 
-namespace Skybrud.Social.Google.YouTube.Responses {
+namespace Skybrud.Social.Google.YouTube.Responses;
+
+/// <summary>
+/// Class representing a response from the YouTube API.
+/// </summary>
+public class YouTubeResponse : HttpResponseBase {
+
+    #region Constructors
 
     /// <summary>
-    /// Class representing a response from the YouTube API.
+    /// Initializes a new instance based on the specified <paramref name="response"/>.
     /// </summary>
-    public class YouTubeResponse : HttpResponseBase {
+    /// <param name="response">The underlying raw response the instance should be based on.</param>
+    protected YouTubeResponse(IHttpResponse response) : base(response) {
 
-        #region Constructors
+        switch (response.StatusCode) {
 
-        /// <summary>
-        /// Initializes a new instance based on the specified <paramref name="response"/>.
-        /// </summary>
-        /// <param name="response">The underlying raw response the instance should be based on.</param>
-        protected YouTubeResponse(IHttpResponse response) : base(response) {
+            // Skip error checking if the server responds with a successful status code
+            case HttpStatusCode.OK:
+            case HttpStatusCode.Created:
+                return;
 
-            switch (response.StatusCode) {
-
-                // Skip error checking if the server responds with a successful status code
-                case HttpStatusCode.OK:
-                case HttpStatusCode.Created:
-                    return;
-
-                default:
-                    YouTubeErrorResult result = ParseJsonObject(response.Body, YouTubeErrorResult.Parse)!;
-                    throw new YouTubeHttpException(response, result);
-
-            }
+            default:
+                YouTubeErrorResult result = ParseJsonObject(response.Body, YouTubeErrorResult.Parse)!;
+                throw new YouTubeHttpException(response, result);
 
         }
 
-        #endregion
-
     }
+
+    #endregion
+
+}
+
+/// <summary>
+/// Class representing a response from the YouTube API.
+/// </summary>
+public class YouTubeResponse<T> : YouTubeResponse {
 
     /// <summary>
-    /// Class representing a response from the YouTube API.
+    /// Gets the body of the response.
     /// </summary>
-    public class YouTubeResponse<T> : YouTubeResponse {
+    public T Body { get; protected set; } = default!;
 
-        /// <summary>
-        /// Gets the body of the response.
-        /// </summary>
-        public T Body { get; protected set; } = default!;
-
-        /// <summary>
-        /// Initializes a new instance based on the specified <paramref name="response"/>.
-        /// </summary>
-        /// <param name="response">The underlying raw response the instance should be based on.</param>
-        protected YouTubeResponse(IHttpResponse response) : base(response) { }
-
-    }
+    /// <summary>
+    /// Initializes a new instance based on the specified <paramref name="response"/>.
+    /// </summary>
+    /// <param name="response">The underlying raw response the instance should be based on.</param>
+    protected YouTubeResponse(IHttpResponse response) : base(response) { }
 
 }

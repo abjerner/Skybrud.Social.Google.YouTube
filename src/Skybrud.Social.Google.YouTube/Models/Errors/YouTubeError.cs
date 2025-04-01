@@ -5,42 +5,40 @@ using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 #pragma warning disable CS1591
 
-namespace Skybrud.Social.Google.YouTube.Models.Errors {
+namespace Skybrud.Social.Google.YouTube.Models.Errors;
 
-    public class YouTubeError {
+public class YouTubeError {
 
-        #region Properties
+    #region Properties
 
-        public int Code { get; }
+    public int Code { get; }
 
-        public string Message { get; }
+    public string Message { get; }
 
-        public IReadOnlyList<YouTubeErrorItem> Errors { get; }
+    public IReadOnlyList<YouTubeErrorItem> Errors { get; }
 
-        public string? Status { get; }
+    public string? Status { get; }
 
-        #endregion
+    #endregion
 
-        #region Constructors
+    #region Constructors
 
-        protected YouTubeError(JObject json) {
-            Code = json.GetInt32("code");
-            Message = json.GetString("message")!;
-            Errors = json.GetArrayItems("errors", YouTubeErrorItem.Parse)!;
-            Status = json.GetString("status");
-        }
-
-        #endregion
-
-        #region Static methods
-
-        [return: NotNullIfNotNull("json")]
-        public static YouTubeError? Parse(JObject? json) {
-            return json == null ? null : new YouTubeError(json);
-        }
-
-        #endregion
-
+    protected YouTubeError(JObject json) {
+        Code = json.GetInt32("code");
+        Message = json.GetString("message")!;
+        Errors = json.GetArrayItems("errors", YouTubeErrorItem.Parse);
+        Status = json.GetString("status");
     }
+
+    #endregion
+
+    #region Static methods
+
+    [return: NotNullIfNotNull("json")]
+    public static YouTubeError? Parse(JObject? json) {
+        return json == null ? null : new YouTubeError(json);
+    }
+
+    #endregion
 
 }

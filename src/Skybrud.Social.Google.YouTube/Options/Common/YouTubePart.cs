@@ -1,31 +1,29 @@
-namespace Skybrud.Social.Google.YouTube.Options.Common {
+namespace Skybrud.Social.Google.YouTube.Options.Common;
+
+/// <summary>
+/// Abstract class representing a part for a YouTube resource.
+/// </summary>
+public abstract class YouTubePart {
+
+    #region Properties
 
     /// <summary>
-    /// Abstract class representing a part for a YouTube resource.
+    /// Gets the alias of the part.
     /// </summary>
-    public abstract class YouTubePart {
+    public string Alias { get; }
 
-        #region Properties
+    #endregion
 
-        /// <summary>
-        /// Gets the alias of the part.
-        /// </summary>
-        public string Alias { get; }
+    #region Constructors
 
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        /// Initializes a new part with the specified <paramref name="alias"/>.
-        /// </summary>
-        /// <param name="alias">The alias  of the scope.</param>
-        protected YouTubePart(string alias) {
-            Alias = alias;
-        }
-
-        #endregion
-
+    /// <summary>
+    /// Initializes a new part with the specified <paramref name="alias"/>.
+    /// </summary>
+    /// <param name="alias">The alias  of the scope.</param>
+    protected YouTubePart(string alias) {
+        Alias = alias;
     }
+
+    #endregion
 
 }

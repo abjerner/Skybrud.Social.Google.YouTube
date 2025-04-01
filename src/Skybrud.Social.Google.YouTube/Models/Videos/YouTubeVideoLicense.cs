@@ -1,16 +1,14 @@
 ﻿#pragma warning disable 1591
 
-namespace Skybrud.Social.Google.YouTube.Models.Videos {
+namespace Skybrud.Social.Google.YouTube.Models.Videos;
 
-    /// <summary>
-    /// Enum class representing the the license type of a YouTube video.
-    /// </summary>
-    /// <see>
-    ///     <cref>https://developers.google.com/youtube/v3/docs/videos#status.license</cref>
-    /// </see>
-    public enum YouTubeVideoLicense {
-        CreativeCommon,
-        YouTube
-    }
-
+/// <summary>
+/// Enum class representing the license type of a YouTube video.
+/// </summary>
+/// <see>
+///     <cref>https://developers.google.com/youtube/v3/docs/videos#status.license</cref>
+/// </see>
+public enum YouTubeVideoLicense {
+    CreativeCommon,
+    YouTube
 }
