@@ -19,6 +19,8 @@ public class YouTubeError {
 
     public string? Status { get; }
 
+    public IReadOnlyList<YouTubeErrorDetailsItem> Details { get; }
+
     #endregion
 
     #region Constructors
@@ -28,6 +30,7 @@ public class YouTubeError {
         Message = json.GetString("message")!;
         Errors = json.GetArrayItems("errors", YouTubeErrorItem.Parse);
         Status = json.GetString("status");
+        Details = json.GetArrayItems("details", YouTubeErrorDetailsItem.Parse);
     }
 
     #endregion
