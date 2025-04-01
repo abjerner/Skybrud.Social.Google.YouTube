@@ -8,12 +8,12 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionPrefix>1.0.1</VersionPrefix>
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Company>Limbo</Company>
     <Product>Skybrud.Social</Product>
     <Authors>Anders Bjerner</Authors>
-    <Copyright>Copyright © 2022</Copyright>
+    <Copyright>Copyright © $([System.DateTime]::UtcNow.ToString(`yyyy`))</Copyright>
     <Description>Authentication and service implementation for the YouTube API.</Description>
   </PropertyGroup>
 
@@ -22,7 +22,7 @@
     <PackageId>Skybrud.Social.Google.YouTube</PackageId>
     <PackageTags>Skybrud, Limbo, Social, Google, YouTube, OAuth, JSON</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://social.skybrud.dk/google/youtube/</PackageProjectUrl>
+    <PackageProjectUrl>https://packages.limbo.works/skybrud.social.google.youtube/</PackageProjectUrl>
     <PackageIcon>Limbo.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/abjerner/Skybrud.Social.Google.YouTube</RepositoryUrl>
