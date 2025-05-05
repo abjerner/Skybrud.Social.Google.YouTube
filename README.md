@@ -28,13 +28,13 @@
 The package is only available via [**NuGet**](https://www.nuget.org/packages/Skybrud.Social.Google.YouTube/1.0.1). To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Skybrud.Social.Google.YouTube --version 1.0.1
+dotnet add package Skybrud.Social.Google.YouTube
 ```
 
 or the older NuGet Package Manager:
 
 ```
-Install-Package Skybrud.Social.Google.YouTube -Version 1.0.1
+Install-Package Skybrud.Social.Google.YouTube
 ```
 
 
