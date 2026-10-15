@@ -25,7 +25,7 @@
 
 ## Installation
 
-The package is only available via [**NuGet**](https://www.nuget.org/packages/Skybrud.Social.Google.YouTube/1.0.1). To install the package, you can use either .NET CLI:
+The package is only available via [**NuGet**](https://www.nuget.org/packages/Skybrud.Social.Google.YouTube). To install the package, you can use either .NET CLI:
 
 ```
 dotnet add package Skybrud.Social.Google.YouTube
@@ -42,7 +42,7 @@ Install-Package Skybrud.Social.Google.YouTube
 
 ## Getting started?
 
-Documentation for this package is available at [**social.skybrud.dk**](https://packages.limbo.works/skybrud.social.google.youtube/docs/).
+Documentation for this package is available at [**packages.limbo.works**](https://packages.limbo.works/skybrud.social.google.youtube/docs/).
 
 
 <br /><br />
